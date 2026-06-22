@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../app_state.dart';
 import '../widgets/sudoku_grid.dart';
@@ -17,29 +18,54 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   bool _showPauseOverlay = false;
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     widget.state.addListener(_onChanged);
     WidgetsBinding.instance.addObserver(this);
+    _startTimerIfNeeded();
   }
 
   @override
   void dispose() {
+    _timer?.cancel();
     widget.state.removeListener(_onChanged);
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
+  void didChangeAppLifecycleState(AppLifecycleState lifecycle) {
+    if (lifecycle == AppLifecycleState.paused) {
       widget.state.pauseGame();
+      _timer?.cancel();
+      _timer = null;
+    } else if (lifecycle == AppLifecycleState.resumed) {
+      _startTimerIfNeeded();
     }
   }
 
-  void _onChanged() => setState(() {});
+  void _startTimerIfNeeded() {
+    final gs = widget.state.gameState;
+    if (gs != null && gs.status == GameStatus.playing && _timer == null) {
+      _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+        widget.state.tick();
+      });
+    }
+  }
+
+  void _onChanged() {
+    final gs = widget.state.gameState;
+    if (gs == null || gs.status != GameStatus.playing) {
+      _timer?.cancel();
+      _timer = null;
+    } else {
+      _startTimerIfNeeded();
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

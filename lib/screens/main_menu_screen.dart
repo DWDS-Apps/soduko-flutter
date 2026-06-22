@@ -18,13 +18,11 @@ class MainMenuScreen extends StatefulWidget {
 }
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
-  bool _checkingSave = true;
-
   @override
   void initState() {
     super.initState();
     widget.state.addListener(_onStateChanged);
-    _check();
+    widget.state.checkSavedGame();
   }
 
   @override
@@ -35,11 +33,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   void _onStateChanged() => setState(() {});
 
-  Future<void> _check() async {
-    await widget.state.checkSavedGame();
-    if (mounted) setState(() => _checkingSave = false);
-  }
-
   void _showDifficultySelector() {
     showModalBottomSheet(
       context: context,
@@ -48,7 +41,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (_) => DifficultySelector(
-        state: widget.state,
         onSelected: (d) => _startNewGame(d),
       ),
     );
@@ -56,9 +48,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   Future<void> _startNewGame(Difficulty d) async {
     await widget.state.startNewGame(d);
-    if (mounted) Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => GameScreen(state: widget.state)),
-    );
+    if (mounted) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => GameScreen(state: widget.state)),
+      );
+    }
   }
 
   Future<void> _continueGame() async {

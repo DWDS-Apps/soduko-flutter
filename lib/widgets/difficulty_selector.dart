@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../core/constants.dart';
-import '../themes/app_theme.dart';
 
 class DifficultySelector extends StatelessWidget {
   final void Function(Difficulty) onSelected;

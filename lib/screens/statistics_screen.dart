@@ -8,8 +8,6 @@ class StatisticsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stats = state.stats;
-
     return Scaffold(
       appBar: AppBar(title: const Text('Statistics')),
       body: ListenableBuilder(

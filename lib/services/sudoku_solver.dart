@@ -39,6 +39,7 @@ class SudokuSolver {
   /// Count solutions (up to [limit]) to check uniqueness.
   static int countSolutions(List<List<int>> grid, {int limit = 2}) {
     int count = 0;
+    _solutionCount = 0; // Reset between calls
     _countSolutions(grid, limit, () {
       count++;
     });

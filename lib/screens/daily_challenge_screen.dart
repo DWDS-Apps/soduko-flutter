@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/game_provider.dart';
-import '../providers/stats_provider.dart';
-import '../services/puzzle_generator.dart';
-import '../services/storage_service.dart';
+import '../app_state.dart';
 import '../core/constants.dart';
 import '../themes/app_theme.dart';
 import 'game_screen.dart';
 
 class DailyChallengeScreen extends StatefulWidget {
-  const DailyChallengeScreen({super.key});
+  final AppState state;
+  const DailyChallengeScreen({super.key, required this.state});
 
   @override
   State<DailyChallengeScreen> createState() => _DailyChallengeScreenState();
@@ -23,11 +20,20 @@ class _DailyChallengeScreenState extends State<DailyChallengeScreen> {
   @override
   void initState() {
     super.initState();
+    widget.state.addListener(_onStateChanged);
     _checkDailyProgress();
   }
 
+  @override
+  void dispose() {
+    widget.state.removeListener(_onStateChanged);
+    super.dispose();
+  }
+
+  void _onStateChanged() => setState(() {});
+
   Future<void> _checkDailyProgress() async {
-    final storage = context.read<StorageService>();
+    final storage = widget.state.storage;
     final today = DateTime.now();
     final todayStart = DateTime(today.year, today.month, today.day);
     final challenge = await storage.loadDailyChallenge(todayStart);
@@ -42,11 +48,10 @@ class _DailyChallengeScreenState extends State<DailyChallengeScreen> {
   }
 
   void _startDaily() {
-    final gameProvider = context.read<GameProvider>();
-    gameProvider.startNewGame(Difficulty.medium);
+    widget.state.startNewGame(Difficulty.medium);
     if (mounted) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const GameScreen()),
+        MaterialPageRoute(builder: (_) => GameScreen(state: widget.state)),
       );
     }
   }
@@ -118,7 +123,7 @@ class _DailyChallengeScreenState extends State<DailyChallengeScreen> {
                           children: [
                             Icon(Icons.local_fire_department, color: Colors.orange),
                             const SizedBox(width: 8),
-                            Text('Streak: ${context.watch<StatsProvider>().stats.currentStreak}',
+                            Text('Streak: ${widget.state.stats.currentStreak}',
                               style: const TextStyle(fontSize: 16)),
                           ],
                         ),

@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-**Last Updated:** 2026-06-22  
+**Last Updated:** 2026-06-23  
 **Target Release:** v1.0.0  
 
 ---
@@ -14,45 +14,45 @@
 - [x] Backtracking solver with uniqueness check
 - [x] Puzzle generator (any difficulty, daily seeded)
 
-### Phase 2 — State & Storage (In Progress)
+### Phase 2 — State & Storage (Complete ✓)
 - [x] Central AppState (ChangeNotifier)
 - [x] JSON file storage service
-- [ ] Wire AppState to all screens/widgets (remove provider stubs)
-- [ ] Delete obsolete provider files
+- [x] Wire AppState to all screens/widgets (remove provider stubs)
+- [x] Delete obsolete provider files
 
-### Phase 3 — UI Shell
-- [ ] Main Menu screen with navigation
-- [ ] Settings screen with all toggles
-- [ ] Statistics screen
-- [ ] About screen
-- [ ] Daily Challenge screen
+### Phase 3 — UI Shell (Complete ✓)
+- [x] Main Menu screen with navigation
+- [x] Settings screen with all toggles
+- [x] Statistics screen
+- [x] About screen
+- [x] Daily Challenge screen
 
-### Phase 4 — Game Board & Controls
-- [ ] SudokuGrid widget with cell selection/highlighting
-- [ ] CellWidget with value/notes/conflict rendering
-- [ ] NumberPad with 1-9, erase, notes, undo/redo, hint
-- [ ] Game timer widget
-- [ ] Victory dialog
+### Phase 4 — Game Board & Controls (Complete ✓)
+- [x] SudokuGrid widget with cell selection/highlighting
+- [x] CellWidget with value/notes/conflict rendering
+- [x] NumberPad with 1-9, erase, notes, undo/redo, hint
+- [x] Game timer widget
+- [x] Victory dialog
 
-### Phase 5 — Game Logic
-- [ ] Number placement with validation
-- [ ] Notes/pencil marks
-- [ ] Undo/redo history
-- [ ] Hint system (max 3)
-- [ ] Pause/resume overlay
-- [ ] Auto-save on every move
-- [ ] Game completion flow
+### Phase 5 — Game Logic (Complete ✓)
+- [x] Number placement with validation
+- [x] Notes/pencil marks
+- [x] Undo/redo history
+- [x] Hint system (max 3)
+- [x] Pause/resume overlay
+- [x] Auto-save on every move
+- [x] Game completion flow
 
-### Phase 6 — Polish
-- [ ] Dark mode support
+### Phase 6 — Polish (In Progress)
+- [x] Dark mode support
+- [x] Timer pause on app background
 - [ ] Responsive layout (phones + tablets)
 - [ ] Left-handed mode
-- [ ] Timer pause on app background
 - [ ] Animations (cell selection, placement, victory)
 - [ ] Accessibility font sizes
 
-### Phase 7 — Testing & QA
-- [ ] Unit tests: solver, generator, board validation
+### Phase 7 — Testing & QA (In Progress)
+- [x] Unit tests: solver, generator, board validation
 - [ ] Widget tests: each screen's baseline state
 - [ ] Integration: full game flow (new → play → win)
 - [ ] Edge cases: empty board, all cells filled, save/restore
@@ -72,9 +72,9 @@
 | Milestone | Date | Status |
 |---|---|---|
 | M1: Architecture & Models | 2026-06-22 | ✅ Done |
-| M2: State & Services | 2026-06-22 | 🔶 In Progress |
-| M3: All Screens Built | TBD | ⬜ |
-| M4: Game Board Playable | TBD | ⬜ |
-| M5: Full Game Loop | TBD | ⬜ |
-| M6: Tests Pass | TBD | ⬜ |
+| M2: State & Services | 2026-06-22 | ✅ Done |
+| M3: All Screens Built | 2026-06-22 | ✅ Done |
+| M4: Game Board Playable | 2026-06-22 | ✅ Done |
+| M5: Full Game Loop | 2026-06-23 | ✅ Done |
+| M6: Tests Pass | 2026-06-23 | 🔶 In Progress |
 | M7: v1.0 Release | TBD | ⬜ |

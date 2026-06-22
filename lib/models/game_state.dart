@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'sudoku_board.dart';
 import '../core/constants.dart';
 
@@ -66,7 +65,7 @@ class GameState {
 
   Map<String, dynamic> toJson() => {
         'board': board.toJson(),
-        'solution': board.toJson(), // stored same for save
+        'solution': solution.toJson(),
         'difficulty': difficulty.name,
         'status': status.name,
         'elapsedSeconds': elapsedSeconds,
@@ -80,7 +79,7 @@ class GameState {
   factory GameState.fromJson(Map<String, dynamic> json) {
     return GameState(
       board: SudokuBoard.fromJson(json['board'] as Map<String, dynamic>),
-      solution: SudokuBoard.fromJson(json['board'] as Map<String, dynamic>),
+      solution: SudokuBoard.fromJson(json['solution'] as Map<String, dynamic>),
       difficulty: Difficulty.fromString(json['difficulty'] as String? ?? 'easy'),
       status: GameStatus.values.firstWhere(
         (s) => s.name == json['status'],

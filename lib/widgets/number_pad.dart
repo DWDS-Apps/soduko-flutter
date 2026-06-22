@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../providers/game_provider.dart';
+import '../app_state.dart';
 import '../themes/app_theme.dart';
 
 class NumberPad extends StatelessWidget {
-  final GameProvider gameProvider;
+  final AppState appState;
   final bool isDarkMode;
 
   const NumberPad({
     super.key,
-    required this.gameProvider,
+    required this.appState,
     required this.isDarkMode,
   });
 
   @override
   Widget build(BuildContext context) {
-    final state = gameProvider.gameState;
+    final state = appState.gameState;
     if (state == null) return const SizedBox();
 
     final usedNumbers = <int>{};
@@ -46,12 +46,12 @@ class NumberPad extends StatelessWidget {
             children: List.generate(9, (index) {
               final number = index + 1;
               final isUsed = usedNumbers.contains(number);
-              final isSelectedNumber = gameProvider.selectedRow >= 0 &&
-                  gameProvider
+              final isSelectedNumber = appState.selectedRow >= 0 &&
+                  appState
                           .gameState!
                           .board
-                          .getCell(gameProvider.selectedRow,
-                              gameProvider.selectedCol)
+                          .getCell(appState.selectedRow,
+                              appState.selectedCol)
                           .value ==
                       number;
 
@@ -60,7 +60,7 @@ class NumberPad extends StatelessWidget {
                 isUsed: isUsed,
                 isSelectedNumber: isSelectedNumber,
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.inputNumber(number),
+                onTap: () => appState.inputNumber(number),
               );
             }),
           ),
@@ -71,38 +71,38 @@ class NumberPad extends StatelessWidget {
               _ActionButton(
                 icon: Icons.undo,
                 label: 'Undo',
-                enabled: gameProvider.gameState?.canUndo ?? false,
+                enabled: appState.gameState?.canUndo ?? false,
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.undo(),
+                onTap: () => appState.undo(),
               ),
               _ActionButton(
                 icon: Icons.auto_fix_high,
                 label: 'Hint',
-                enabled: (gameProvider.gameState?.hintsUsed ?? 0) < 3,
+                enabled: (appState.gameState?.hintsUsed ?? 0) < 3,
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.useHint(),
+                onTap: () => appState.useHint(),
               ),
               _ActionButton(
-                icon: gameProvider.notesMode
+                icon: appState.notesMode
                     ? Icons.edit_note
                     : Icons.edit_off,
-                label: gameProvider.notesMode ? 'Notes ON' : 'Notes',
-                isActive: gameProvider.notesMode,
+                label: appState.notesMode ? 'Notes ON' : 'Notes',
+                isActive: appState.notesMode,
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.toggleNotesMode(),
+                onTap: () => appState.toggleNotesMode(),
               ),
               _ActionButton(
                 icon: Icons.backspace,
                 label: 'Erase',
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.eraseCell(),
+                onTap: () => appState.eraseCell(),
               ),
               _ActionButton(
                 icon: Icons.redo,
                 label: 'Redo',
-                enabled: gameProvider.gameState?.canRedo ?? false,
+                enabled: appState.gameState?.canRedo ?? false,
                 isDarkMode: isDarkMode,
-                onTap: () => gameProvider.redo(),
+                onTap: () => appState.redo(),
               ),
             ],
           ),

@@ -1,6 +1,6 @@
 # Tasks — Sudoku v1.0
 
-**Last Updated:** 2026-06-22  
+**Last Updated:** 2026-06-23  
 **Tracking method:** This file. Mark `[ ]` → `[x]` as completed.
 
 ---
@@ -14,15 +14,14 @@
 - [x] Implement puzzle generator with uniqueness check (`puzzle_generator.dart`)
 - [x] Implement JSON file storage service (`storage_service.dart`)
 
-## Phase 2: State & Storage
+## Phase 2: State & Storage ✅
 
 - [x] Create central `AppState` (ChangeNotifier) aggregating game/settings/stats
 - [x] Wire `AppState` via constructor to all screens
 - [x] Delete obsolete `providers/` files (game_provider, settings_provider, stats_provider)
-- [ ] Remove unused `dart:convert` imports from model files (cosmetic)
-- [ ] Verify all files compile with `dart analyze`
+- [x] Verify all files compile with `dart analyze`
 
-## Phase 3: UI Shell
+## Phase 3: UI Shell ✅
 
 - [x] MainMenuScreen — stats bar, menu buttons, continue/new/daily
 - [x] SettingsScreen — all toggles, reset button
@@ -30,43 +29,37 @@
 - [x] AboutScreen — app name, version, description
 - [x] DailyChallengeScreen — calendar icon, completed/streak state, play button
 
-### Phase 3 Fixes (current)
-- [ ] Rewrite `sudoku_grid.dart` to accept `AppState` param instead of `GameProvider`
-- [ ] Rewrite `number_pad.dart` to accept `AppState` param instead of `GameProvider`
-- [ ] Rewrite `daily_challenge_screen.dart` to accept `AppState` param instead of `context.read`
-- [ ] Update `difficulty_selector.dart` to accept `AppState` param
+## Phase 4: Game Board & Controls ✅
 
-## Phase 4: Game Board & Controls
+- [x] SudokuGrid with 9×9 layout, 3×3 box borders, cell tap → selection
+- [x] CellWidget rendering: value, notes grid, conflict/hint colors, highlight states
+- [x] NumberPad: 1-9 buttons with used-number dimming, erase, notes toggle, undo/redo, hint
+- [x] GameTimerWidget: HH:MM:SS display
+- [x] VictoryDialog: completion stats, play again, share, home
 
-- [ ] SudokuGrid with 9×9 layout, 3×3 box borders, cell tap → selection
-- [ ] CellWidget rendering: value, notes grid, conflict/hint colors, highlight states
-- [ ] NumberPad: 1-9 buttons with used-number dimming, erase, notes toggle, undo/redo, hint
-- [ ] GameTimerWidget: HH:MM:SS display
-- [ ] VictoryDialog: completion stats, play again, share, home
+## Phase 5: Game Logic ✅
 
-## Phase 5: Game Logic
+- [x] Number placement: input → validate → update board → check completion
+- [x] Notes mode: toggle → tap number toggles candidate
+- [x] Undo/redo: history stack, apply/restore cell state
+- [x] Hint: find first empty cell → fill with solution value → mark as hint
+- [x] Pause overlay: pause timer, blur board, resume/restart/quit
+- [x] Auto-save: persist GameState after each move
+- [x] Game completion: validate → show VictoryDialog → record stats
 
-- [ ] Number placement: input → validate → update board → check completion
-- [ ] Notes mode: toggle → tap number toggles candidate
-- [ ] Undo/redo: history stack, apply/restore cell state
-- [ ] Hint: find first empty cell → fill with solution value → mark as hint
-- [ ] Pause overlay: pause timer, blur board, resume/restart/quit
-- [ ] Auto-save: persist GameState after each move
-- [ ] Game completion: validate → show VictoryDialog → record stats
+## Phase 6: Polish (In Progress)
 
-## Phase 6: Polish
-
-- [ ] Dark mode: wire AppState.settings.darkMode → MaterialApp themeMode
+- [x] Dark mode: wire AppState.settings.darkMode → MaterialApp themeMode
+- [x] Timer pause on app lifecycle (WidgetsBindingObserver)
 - [ ] Left-handed mode: flip number pad layout
-- [ ] Timer pause on app lifecycle (WidgetsBindingObserver)
 - [ ] Animations: hero-like cell transition, victory confetti stub
 - [ ] Responsive: constrain grid width on tablets
 
-## Phase 7: Testing
+## Phase 7: Testing (In Progress)
 
-- [ ] `test/sudoku_solver_test.dart` — solver, validation, countSolutions
-- [ ] `test/sudoku_board_test.dart` — board ops, cell, JSON roundtrip
-- [ ] `test/puzzle_generator_test.dart` — generates valid, unique puzzles
+- [x] `test/sudoku_solver_test.dart` — solver, validation, countSolutions
+- [x] `test/sudoku_board_test.dart` — board ops, cell, JSON roundtrip
+- [x] `test/puzzle_generator_test.dart` — generates valid, unique puzzles
 - [ ] `test/app_state_test.dart` — game flow, undo/redo, stats record
 - [ ] `test/widget_screens_test.dart` — main menu, game screen smoke tests
 
@@ -88,9 +81,9 @@
 | Solver/Generator | ✅ 100% |
 | Storage | ✅ 100% |
 | AppState (central) | ✅ 100% |
-| Screens (stubs) | ✅ 100% |
-| Widgets (need AppState wiring) | 🔶 60% |
-| Remove provider deps | ⬜ 0% |
-| Compiles clean | ⬜ 0% |
-| Tests | 🔶 30% |
-| Polish | ⬜ 0% |
+| Screens | ✅ 100% |
+| Game Board & Controls | ✅ 100% |
+| Game Logic | ✅ 100% |
+| Polish | 🔶 60% |
+| Tests | 🔶 60% |
+| Release | ⬜ 0% |

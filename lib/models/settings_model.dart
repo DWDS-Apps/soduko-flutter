@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SettingsModel {
   bool darkMode;
   bool soundEnabled;

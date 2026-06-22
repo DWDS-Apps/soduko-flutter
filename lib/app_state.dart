@@ -258,7 +258,21 @@ class AppState extends ChangeNotifier {
   void setShowTimer(bool v) { settings.showTimer = v; storage.saveSettings(settings); notifyListeners(); }
   void setLeftHandedMode(bool v) { settings.leftHandedMode = v; storage.saveSettings(settings); notifyListeners(); }
 
+  /// Called by the game timer each second.
+  void tick() {
+    if (gameState?.status == GameStatus.playing) {
+      elapsedSeconds++;
+      notifyListeners();
+    }
+  }
+
   // ---- Helpers ----
+  void resetSettings() {
+    settings = SettingsModel();
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
   Set<int> getSameNumberCells(int value) {
     if (value == 0 || gameState == null) return {};
     final cells = <int>{};

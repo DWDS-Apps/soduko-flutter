@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import '../providers/game_provider.dart';
+import '../app_state.dart';
 import '../themes/app_theme.dart';
 import 'cell_widget.dart';
 
 class SudokuGrid extends StatelessWidget {
-  final GameProvider gameProvider;
+  final AppState appState;
   final bool isDarkMode;
 
   const SudokuGrid({
     super.key,
-    required this.gameProvider,
+    required this.appState,
     required this.isDarkMode,
   });
 
   @override
   Widget build(BuildContext context) {
-    final state = gameProvider.gameState;
+    final state = appState.gameState;
     if (state == null) return const SizedBox();
 
     final board = state.board;
-    final selectedValue = gameProvider.selectedRow >= 0
-        ? board.getCell(gameProvider.selectedRow, gameProvider.selectedCol).value
-        : 0;
-
-    final highlightedCells = gameProvider.getHighlightedCells();
+    final highlightedCells = appState.getHighlightedCells();
 
     return AspectRatio(
       aspectRatio: 1,
@@ -54,9 +50,9 @@ class SudokuGrid extends StatelessWidget {
             final cellIndex = row * 9 + col;
 
             final isSelected =
-                row == gameProvider.selectedRow && col == gameProvider.selectedCol;
+                row == appState.selectedRow && col == appState.selectedCol;
             final isHighlighted = highlightedCells.contains(cellIndex);
-            final showSameValue = gameProvider
+            final showSameValue = appState
                 .getSameNumberCells(cell.value)
                 .contains(cellIndex);
 
@@ -92,7 +88,7 @@ class SudokuGrid extends StatelessWidget {
                 ),
               ),
               child: GestureDetector(
-                onTap: () => gameProvider.selectCell(row, col),
+                onTap: () => appState.selectCell(row, col),
                 child: CellWidget(
                   value: cell.value,
                   isGiven: cell.isGiven,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../app_state.dart';
-import '../models/settings_model.dart';
 
 class SettingsScreen extends StatelessWidget {
   final AppState state;
@@ -64,7 +63,7 @@ class SettingsScreen extends StatelessWidget {
                         content: const Text('Reset all settings to default?'),
                         actions: [
                           TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-                          TextButton(onPressed: () { Navigator.pop(ctx); state.settings = SettingsModel(); state.notifyListeners(); }, child: const Text('Reset')),
+                          TextButton(onPressed: () { Navigator.pop(ctx); state.resetSettings(); }, child: const Text('Reset')),
                         ],
                       ),
                     );
