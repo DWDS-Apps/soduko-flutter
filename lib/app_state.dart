@@ -208,11 +208,13 @@ class AppState extends ChangeNotifier {
   }
 
   void pauseGame() {
+    if (gameState == null || gameState!.status != GameStatus.playing) return;
     gameState = gameState!.copyWith(status: GameStatus.paused);
     notifyListeners();
   }
 
   void resumeGame() {
+    if (gameState == null) return;
     gameState = gameState!.copyWith(status: GameStatus.playing);
     notifyListeners();
   }
@@ -249,7 +251,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> _autoSave() async {
-    if (gameState != null) {
+    if (gameState != null && gameState!.status != GameStatus.won) {
       await storage.saveGame(gameState!.copyWith(elapsedSeconds: elapsedSeconds));
     }
   }

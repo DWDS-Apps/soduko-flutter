@@ -55,8 +55,8 @@
 - [x] Unit tests: solver, generator, board validation
 - [x] AppState unit tests: game flow, undo/redo, stats, settings
 - [x] Widget sanity tests: main menu, settings, stats, about, daily challenge
-- [ ] Integration: full game flow (new → play → win)
-- [ ] Edge cases: empty board, all cells filled, save/restore
+- [x] Integration: full game flow (new → play → win)
+- [x] Edge cases: empty board, all cells filled, save/restore
 - [ ] 80%+ code coverage target
 
 ### Phase 8 — Release
@@ -77,5 +77,6 @@
 || M3: All Screens Built | 2026-06-22 | ✅ Done |
 || M4: Game Board Playable | 2026-06-22 | ✅ Done |
 || M5: Full Game Loop | 2026-06-23 | ✅ Done |
-|| M6: Left-Handed + Responsive + Tests | 2026-06-23 | ✅ Done |
-|| M7: v1.0 Release | TBD | ⬜ |
+||| M6: Left-Handed + Responsive + Tests | 2026-06-23 | ✅ Done |
+||| M7: Integration + Edge Case Tests | 2026-06-23 | ✅ Done |
+||| M8: v1.0 Release | TBD | ⬜ |

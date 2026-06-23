@@ -62,8 +62,8 @@
 - [x] `test/puzzle_generator_test.dart` — generates valid, unique puzzles
 - [x] `test/app_state_test.dart` — game flow, undo/redo, stats record (25 tests)
 - [x] `test/widget_screens_test.dart` — main menu, settings, stats, about, daily challenge smoke tests (8 tests)
-- [ ] Integration: full game flow (new → play → win)
-- [ ] Edge cases: empty board, all cells filled, save/restore
+- [x] Integration: full game flow (new → play → win)
+- [x] Edge cases: empty board, all cells filled, save/restore
 - [ ] 80%+ code coverage target
 
 ## Phase 8: Release
@@ -86,5 +86,5 @@
 | Phase 4: Game Board & Controls | ✅ Done |
 | Phase 5: Game Logic | ✅ Done |
 | Phase 6: Polish | 🔶 80% |
-| Phase 7: Testing & QA | 🔶 70% |
+|| Phase 7: Testing & QA | 🔶 90% |
 | Phase 8: Release | ⬜ 0% |
