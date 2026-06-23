@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-**Last Updated:** 2026-06-23 (Session 4)  
+**Last Updated:** 2026-06-23 (Session 5)  
 **Target Release:** v1.0.0  
 
 ---
@@ -70,13 +70,13 @@
 
 ## Milestones
 
-|| Milestone | Date | Status |
-|---|---|---|---|
-|| M1: Architecture & Models | 2026-06-22 | ✅ Done |
-|| M2: State & Services | 2026-06-22 | ✅ Done |
-|| M3: All Screens Built | 2026-06-22 | ✅ Done |
-|| M4: Game Board Playable | 2026-06-22 | ✅ Done |
-|| M5: Full Game Loop | 2026-06-23 | ✅ Done |
+||| Milestone | Date | Status |
+|---|---|---|---|---|
+||| M1: Architecture & Models | 2026-06-22 | ✅ Done |
+||| M2: State & Services | 2026-06-22 | ✅ Done |
+||| M3: All Screens Built | 2026-06-22 | ✅ Done |
+||| M4: Game Board Playable | 2026-06-22 | ✅ Done |
+||| M5: Full Game Loop | 2026-06-23 | ✅ Done |
 ||| M6: Left-Handed + Responsive + Tests | 2026-06-23 | ✅ Done |
 ||| M7: Integration + Edge Case + Animations + 80% Coverage | 2026-06-23 | ✅ Done |
-|| M8: v1.0 Release | TBD | ⬜ |
+||| M8: v1.0 Release | 2026-06-23 | 🔶 Partial (docs + version done; APK build requires Android SDK setup on host) |

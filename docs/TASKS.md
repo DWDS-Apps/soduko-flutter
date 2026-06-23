@@ -70,11 +70,11 @@
 
 ## Phase 8: Release
 
+- [x] Version bump pubspec.yaml to 1.0.0
+- [x] Update README.md with full setup, screenshots, architecture
 - [ ] Generate app icon (adaptive Android + iOS)
-- [ ] Verify Android build: `flutter build apk`
+- [ ] Verify Android build: `flutter build apk` (blocked: no Android SDK in CI)
 - [ ] Verify iOS build: `flutter build ios` (requires macOS + Xcode)
-- [ ] Update README.md with full setup, screenshots, architecture
-- [ ] Version bump pubspec.yaml to 1.0.0
 
 ---
 
@@ -89,4 +89,4 @@
 | Phase 5: Game Logic | ✅ Done |
 | Phase 6: Polish | ✅ Done |
 | Phase 7: Testing & QA | ✅ Done (80.3%) |
-| Phase 8: Release | ⬜ 0% |
+| Phase 8: Release | 🔶 2/5 done |

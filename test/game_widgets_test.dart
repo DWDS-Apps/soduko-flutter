@@ -340,7 +340,7 @@ void main() {
   });
 
   group('VictoryDialog', () {
-    GameState _completedState() {
+    GameState completedState() {
       final board = SudokuBoard.empty();
       final solution = SudokuBoard.empty();
       return GameState(
@@ -352,7 +352,7 @@ void main() {
     }
 
     testWidgets('renders completion message', (tester) async {
-      final state = _completedState();
+      final state = completedState();
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: VictoryDialog(
@@ -371,7 +371,7 @@ void main() {
     });
 
     testWidgets('shows NEW BEST badge', (tester) async {
-      final state = _completedState();
+      final state = completedState();
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: VictoryDialog(
@@ -390,7 +390,7 @@ void main() {
     });
 
     testWidgets('displays game stats correctly', (tester) async {
-      final state = _completedState();
+      final state = completedState();
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: VictoryDialog(
@@ -412,7 +412,7 @@ void main() {
     });
 
     testWidgets('calls onPlayAgain when button tapped', (tester) async {
-      final state = _completedState();
+      final state = completedState();
       bool called = false;
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -434,7 +434,7 @@ void main() {
     });
 
     testWidgets('calls onHome when button tapped', (tester) async {
-      final state = _completedState();
+      final state = completedState();
       bool called = false;
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -458,11 +458,10 @@ void main() {
 
   group('DifficultySelector', () {
     testWidgets('renders all difficulty options', (tester) async {
-      Difficulty? selected;
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: DifficultySelector(
-            onSelected: (d) => selected = d,
+            onSelected: (_) {},
           ),
         ),
       ));
