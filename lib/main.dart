@@ -3,6 +3,7 @@ import 'app_state.dart';
 import 'services/storage_service.dart';
 import 'screens/main_menu_screen.dart';
 import 'themes/app_theme.dart';
+import 'core/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ class SudokuApp extends StatelessWidget {
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)),
           child: MaterialApp(
-            title: 'Sudoku',
+            title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,

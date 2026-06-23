@@ -1,5 +1,6 @@
 class AppConstants {
   static const String appName = 'Sudoku';
+  static const String appVersion = '1.0.0';
   static const int gridSize = 9;
   static const int boxSize = 3;
   static const int maxHints = 3;

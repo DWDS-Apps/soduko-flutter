@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/constants.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -22,11 +23,11 @@ class AboutScreen extends StatelessWidget {
                 child: const Icon(Icons.grid_on, size: 52, color: Colors.white),
               ),
               const SizedBox(height: 20),
-              Text('Sudoku', style: TextStyle(
+              Text(AppConstants.appName, style: TextStyle(
                 fontSize: 32, fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary)),
               const SizedBox(height: 8),
-              Text('Version 1.0.0',
+              Text('Version ${AppConstants.appVersion}',
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade600)),
               const SizedBox(height: 24),
               Text(

@@ -102,7 +102,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     child: const Icon(Icons.grid_on, size: 48, color: Colors.white),
                   ),
                   const SizedBox(height: 16),
-                  Text('Sudoku', style: TextStyle(
+                  Text(AppConstants.appName, style: TextStyle(
                     fontSize: 36, fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary)),
                   const SizedBox(height: 12),
