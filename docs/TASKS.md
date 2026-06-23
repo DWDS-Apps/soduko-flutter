@@ -51,17 +51,20 @@
 
 - [x] Dark mode: wire AppState.settings.darkMode → MaterialApp themeMode
 - [x] Timer pause on app lifecycle (WidgetsBindingObserver)
-- [ ] Left-handed mode: flip number pad layout
+- [x] Left-handed mode: flip number pad layout
+- [x] Responsive layout: constrain grid width on tablets (LayoutBuilder)
 - [ ] Animations: hero-like cell transition, victory confetti stub
-- [ ] Responsive: constrain grid width on tablets
 
 ## Phase 7: Testing (In Progress)
 
 - [x] `test/sudoku_solver_test.dart` — solver, validation, countSolutions
 - [x] `test/sudoku_board_test.dart` — board ops, cell, JSON roundtrip
 - [x] `test/puzzle_generator_test.dart` — generates valid, unique puzzles
-- [ ] `test/app_state_test.dart` — game flow, undo/redo, stats record
-- [ ] `test/widget_screens_test.dart` — main menu, game screen smoke tests
+- [x] `test/app_state_test.dart` — game flow, undo/redo, stats record (25 tests)
+- [x] `test/widget_screens_test.dart` — main menu, settings, stats, about, daily challenge smoke tests (8 tests)
+- [ ] Integration: full game flow (new → play → win)
+- [ ] Edge cases: empty board, all cells filled, save/restore
+- [ ] 80%+ code coverage target
 
 ## Phase 8: Release
 
@@ -75,15 +78,13 @@
 
 ## Quick Status
 
-| Area | Progress |
-|---|---|
-| Data models | ✅ 100% |
-| Solver/Generator | ✅ 100% |
-| Storage | ✅ 100% |
-| AppState (central) | ✅ 100% |
-| Screens | ✅ 100% |
-| Game Board & Controls | ✅ 100% |
-| Game Logic | ✅ 100% |
-| Polish | 🔶 60% |
-| Tests | 🔶 60% |
-| Release | ⬜ 0% |
+|| Phase reached | Status |
+|:--|:--|:--|
+| Phase 1: Foundation | ✅ Done |
+| Phase 2: State & Storage | ✅ Done |
+| Phase 3: UI Shell | ✅ Done |
+| Phase 4: Game Board & Controls | ✅ Done |
+| Phase 5: Game Logic | ✅ Done |
+| Phase 6: Polish | 🔶 80% |
+| Phase 7: Testing & QA | 🔶 70% |
+| Phase 8: Release | ⬜ 0% |

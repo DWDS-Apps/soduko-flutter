@@ -88,13 +88,17 @@ class AppState extends ChangeNotifier {
     if (cell.isGiven) return;
 
     if (notesMode) {
+      final prevNotes = Set<int>.from(cell.notes);
       gameState!.board.toggleNote(selectedRow, selectedCol, number);
+      final newNotes = Set<int>.from(cell.notes);
       _recordMove(Move(
         row: selectedRow, col: selectedCol,
         previousValue: 0, newValue: 0,
-        previousNotes: Set.from(cell.notes), newNotes: Set.from(cell.notes),
+        previousNotes: prevNotes, newNotes: newNotes,
       ));
     } else {
+      final previousValue = cell.value;
+      final previousNotes = Set<int>.from(cell.notes);
       final isValid = gameState!.board.isValidPlacement(selectedRow, selectedCol, number);
       gameState!.board.setCellValue(selectedRow, selectedCol, number);
 
@@ -105,7 +109,8 @@ class AppState extends ChangeNotifier {
 
       _recordMove(Move(
         row: selectedRow, col: selectedCol,
-        previousValue: cell.value, newValue: number,
+        previousValue: previousValue, newValue: number,
+        previousNotes: previousNotes, newNotes: {},
       ));
 
       if (gameState!.board.isComplete() && !gameState!.board.hasConflicts()) {

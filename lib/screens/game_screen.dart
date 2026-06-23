@@ -157,10 +157,22 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: SudokuGrid(appState: appState, isDarkMode: isDark),
+                child: Center(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      final maxGridWidth = constraints.maxWidth > 600
+                          ? 480.0
+                          : constraints.maxWidth;
+                      return SizedBox(
+                        width: maxGridWidth,
+                        child: SudokuGrid(appState: appState, isDarkMode: isDark),
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
-            NumberPad(appState: appState, isDarkMode: isDark),
+            NumberPad(appState: appState, isDarkMode: isDark, leftHanded: appState.settings.leftHandedMode),
           ]),
           if (_showPauseOverlay) _pauseOverlay(appState),
         ],

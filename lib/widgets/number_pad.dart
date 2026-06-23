@@ -5,11 +5,13 @@ import '../themes/app_theme.dart';
 class NumberPad extends StatelessWidget {
   final AppState appState;
   final bool isDarkMode;
+  final bool leftHanded;
 
   const NumberPad({
     super.key,
     required this.appState,
     required this.isDarkMode,
+    this.leftHanded = false,
   });
 
   @override
@@ -67,44 +69,83 @@ class NumberPad extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _ActionButton(
-                icon: Icons.undo,
-                label: 'Undo',
-                enabled: appState.gameState?.canUndo ?? false,
-                isDarkMode: isDarkMode,
-                onTap: () => appState.undo(),
-              ),
-              _ActionButton(
-                icon: Icons.auto_fix_high,
-                label: 'Hint',
-                enabled: (appState.gameState?.hintsUsed ?? 0) < 3,
-                isDarkMode: isDarkMode,
-                onTap: () => appState.useHint(),
-              ),
-              _ActionButton(
-                icon: appState.notesMode
-                    ? Icons.edit_note
-                    : Icons.edit_off,
-                label: appState.notesMode ? 'Notes ON' : 'Notes',
-                isActive: appState.notesMode,
-                isDarkMode: isDarkMode,
-                onTap: () => appState.toggleNotesMode(),
-              ),
-              _ActionButton(
-                icon: Icons.backspace,
-                label: 'Erase',
-                isDarkMode: isDarkMode,
-                onTap: () => appState.eraseCell(),
-              ),
-              _ActionButton(
-                icon: Icons.redo,
-                label: 'Redo',
-                enabled: appState.gameState?.canRedo ?? false,
-                isDarkMode: isDarkMode,
-                onTap: () => appState.redo(),
-              ),
-            ],
+            children: (leftHanded
+                ? [
+                    _ActionButton(
+                      icon: Icons.backspace,
+                      label: 'Erase',
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.eraseCell(),
+                    ),
+                    _ActionButton(
+                      icon: appState.notesMode
+                          ? Icons.edit_note
+                          : Icons.edit_off,
+                      label: appState.notesMode ? 'Notes ON' : 'Notes',
+                      isActive: appState.notesMode,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.toggleNotesMode(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.auto_fix_high,
+                      label: 'Hint',
+                      enabled: (appState.gameState?.hintsUsed ?? 0) < 3,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.useHint(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.undo,
+                      label: 'Undo',
+                      enabled: appState.gameState?.canUndo ?? false,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.undo(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.redo,
+                      label: 'Redo',
+                      enabled: appState.gameState?.canRedo ?? false,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.redo(),
+                    ),
+                  ]
+                : [
+                    _ActionButton(
+                      icon: Icons.undo,
+                      label: 'Undo',
+                      enabled: appState.gameState?.canUndo ?? false,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.undo(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.auto_fix_high,
+                      label: 'Hint',
+                      enabled: (appState.gameState?.hintsUsed ?? 0) < 3,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.useHint(),
+                    ),
+                    _ActionButton(
+                      icon: appState.notesMode
+                          ? Icons.edit_note
+                          : Icons.edit_off,
+                      label: appState.notesMode ? 'Notes ON' : 'Notes',
+                      isActive: appState.notesMode,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.toggleNotesMode(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.backspace,
+                      label: 'Erase',
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.eraseCell(),
+                    ),
+                    _ActionButton(
+                      icon: Icons.redo,
+                      label: 'Redo',
+                      enabled: appState.gameState?.canRedo ?? false,
+                      isDarkMode: isDarkMode,
+                      onTap: () => appState.redo(),
+                    ),
+                  ]),
           ),
         ],
       ),
