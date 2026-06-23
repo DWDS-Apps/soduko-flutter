@@ -498,4 +498,28 @@ void main() {
       });
     });
   });
+
+  group('SettingsModel fontScale', () {
+    test('default fontScale is 1.0', () {
+      final s = SettingsModel();
+      expect(s.fontScale, 1.0);
+    });
+
+    test('fontScale serialization roundtrip', () {
+      final s = SettingsModel(fontScale: 1.25);
+      final json = s.toJson();
+      final restored = SettingsModel.fromJson(json);
+      expect(restored.fontScale, 1.25);
+    });
+
+    test('fontScale fromJson handles missing key', () {
+      final restored = SettingsModel.fromJson({'darkMode': true});
+      expect(restored.fontScale, 1.0);
+    });
+
+    test('fontScale can be set to 1.5', () {
+      final s = SettingsModel(fontScale: 1.5);
+      expect(s.fontScale, 1.5);
+    });
+  });
 }

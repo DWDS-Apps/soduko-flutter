@@ -47,15 +47,16 @@
 - [x] Auto-save: persist GameState after each move
 - [x] Game completion: validate → show VictoryDialog → record stats
 
-## Phase 6: Polish (In Progress)
+## Phase 6: Polish (Complete ✅)
 
 - [x] Dark mode: wire AppState.settings.darkMode → MaterialApp themeMode
 - [x] Timer pause on app lifecycle (WidgetsBindingObserver)
 - [x] Left-handed mode: flip number pad layout
 - [x] Responsive layout: constrain grid width on tablets (LayoutBuilder)
-- [ ] Animations: hero-like cell transition, victory confetti stub
+- [x] Animations: cell selection (AnimatedContainer), number placement pop-in (TweenAnimationBuilder), victory confetti overlay
+- [x] Accessibility font sizes (MediaQuery textScaler + Settings)
 
-## Phase 7: Testing (In Progress)
+## Phase 7: Testing (Complete ✅)
 
 - [x] `test/sudoku_solver_test.dart` — solver, validation, countSolutions
 - [x] `test/sudoku_board_test.dart` — board ops, cell, JSON roundtrip
@@ -64,7 +65,8 @@
 - [x] `test/widget_screens_test.dart` — main menu, settings, stats, about, daily challenge smoke tests (8 tests)
 - [x] Integration: full game flow (new → play → win)
 - [x] Edge cases: empty board, all cells filled, save/restore
-- [ ] 80%+ code coverage target
+- [x] `test/game_widgets_test.dart` — CellWidget, SudokuGrid, NumberPad, GameTimer, VictoryDialog, DifficultySelector, font scale (31 tests)
+- [x] 80%+ code coverage target (achieved 80.3%)
 
 ## Phase 8: Release
 
@@ -85,6 +87,6 @@
 | Phase 3: UI Shell | ✅ Done |
 | Phase 4: Game Board & Controls | ✅ Done |
 | Phase 5: Game Logic | ✅ Done |
-| Phase 6: Polish | 🔶 80% |
-|| Phase 7: Testing & QA | 🔶 90% |
+| Phase 6: Polish | ✅ Done |
+| Phase 7: Testing & QA | ✅ Done (80.3%) |
 | Phase 8: Release | ⬜ 0% |

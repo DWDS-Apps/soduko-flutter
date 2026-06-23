@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../themes/app_theme.dart';
 
+/// Duration for cell animation transitions.
+const _kAnimDuration = Duration(milliseconds: 200);
+
 class CellWidget extends StatelessWidget {
   final int value;
   final bool isGiven;
@@ -50,7 +53,9 @@ class CellWidget extends StatelessWidget {
       textColor = Colors.transparent;
     }
 
-    return Container(
+    return AnimatedContainer(
+      duration: _kAnimDuration,
+      curve: Curves.easeInOut,
       decoration: BoxDecoration(
         color: bgColor,
         border: Border.all(
@@ -59,17 +64,10 @@ class CellWidget extends StatelessWidget {
         ),
       ),
       child: value != 0
-          ? Center(
-              child: FittedBox(
-                child: Text(
-                  '$value',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: isGiven ? FontWeight.w600 : FontWeight.w400,
-                    color: textColor,
-                  ),
-                ),
-              ),
+          ? _AnimatedNumber(
+              value: value,
+              isGiven: isGiven,
+              textColor: textColor,
             )
           : _buildNotes(),
     );
@@ -99,6 +97,47 @@ class CellWidget extends StatelessWidget {
                 : const SizedBox(),
           );
         }),
+      ),
+    );
+  }
+}
+
+/// Animated number that pops in on value change.
+class _AnimatedNumber extends StatelessWidget {
+  final int value;
+  final bool isGiven;
+  final Color textColor;
+
+  const _AnimatedNumber({
+    required this.value,
+    required this.isGiven,
+    required this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      key: ValueKey('num_$value'),
+      tween: Tween(begin: 0.7, end: 1.0),
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.elasticOut,
+      builder: (context, scale, child) {
+        return Transform.scale(
+          scale: scale,
+          child: child,
+        );
+      },
+      child: Center(
+        child: FittedBox(
+          child: Text(
+            '$value',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: isGiven ? FontWeight.w600 : FontWeight.w400,
+              color: textColor,
+            ),
+          ),
+        ),
       ),
     );
   }

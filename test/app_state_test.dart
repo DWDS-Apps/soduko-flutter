@@ -283,7 +283,12 @@ void main() {
       expect(appState.settings.leftHandedMode, true);
     });
 
-    test('resetSettings reverts to defaults', () async {
+    test('setFontScale updates setting', () async {
+      appState.setFontScale(1.25);
+      expect(appState.settings.fontScale, 1.25);
+    });
+
+    test('resetSettings reverts font scale to defaults', () async {
       appState.setDarkMode(true);
       appState.setSoundEnabled(false);
       appState.setShowTimer(false);

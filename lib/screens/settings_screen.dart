@@ -51,6 +51,27 @@ class SettingsScreen extends StatelessWidget {
               _SettingsTile(icon: Icons.handyman, title: 'Left-Handed Mode', subtitle: 'Optimize for left-handed use',
                 trailing: Switch(value: s.leftHandedMode, onChanged: (v) => state.setLeftHandedMode(v))),
               const Divider(height: 1),
+              const SizedBox(height: 24),
+
+              _SectionHeader(title: 'Accessibility'),
+              const SizedBox(height: 8),
+              _SettingsTile(icon: Icons.text_fields, title: 'Font Size', subtitle: 'Adjust text size throughout the app',
+                trailing: SegmentedButton<double>(
+                  segments: const [
+                    ButtonSegment(value: 0.85, label: Text('S')),
+                    ButtonSegment(value: 1.0, label: Text('M')),
+                    ButtonSegment(value: 1.25, label: Text('L')),
+                    ButtonSegment(value: 1.5, label: Text('XL')),
+                  ],
+                  selected: {s.fontScale},
+                  onSelectionChanged: (v) => state.setFontScale(v.first),
+                  style: ButtonStyle(
+                    visualDensity: VisualDensity.compact,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                ),
+              ),
+              const Divider(height: 1),
               const SizedBox(height: 32),
 
               Center(

@@ -24,13 +24,17 @@ class SudokuApp extends StatelessWidget {
       listenable: appState,
       builder: (context, _) {
         final isDark = appState.settings.darkMode;
-        return MaterialApp(
-          title: 'Sudoku',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
-          home: MainMenuScreen(state: appState),
+        final fontScale = appState.settings.fontScale;
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)),
+          child: MaterialApp(
+            title: 'Sudoku',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+            home: MainMenuScreen(state: appState),
+          ),
         );
       },
     );

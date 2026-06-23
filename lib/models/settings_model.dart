@@ -6,6 +6,7 @@ class SettingsModel {
   bool autoCheckMistakes;
   bool showTimer;
   bool leftHandedMode;
+  double fontScale;
 
   SettingsModel({
     this.darkMode = false,
@@ -15,6 +16,7 @@ class SettingsModel {
     this.autoCheckMistakes = true,
     this.showTimer = true,
     this.leftHandedMode = false,
+    this.fontScale = 1.0,
   });
 
   SettingsModel copyWith({
@@ -25,6 +27,7 @@ class SettingsModel {
     bool? autoCheckMistakes,
     bool? showTimer,
     bool? leftHandedMode,
+    double? fontScale,
   }) {
     return SettingsModel(
       darkMode: darkMode ?? this.darkMode,
@@ -34,6 +37,7 @@ class SettingsModel {
       autoCheckMistakes: autoCheckMistakes ?? this.autoCheckMistakes,
       showTimer: showTimer ?? this.showTimer,
       leftHandedMode: leftHandedMode ?? this.leftHandedMode,
+      fontScale: fontScale ?? this.fontScale,
     );
   }
 
@@ -45,6 +49,7 @@ class SettingsModel {
         'autoCheckMistakes': autoCheckMistakes,
         'showTimer': showTimer,
         'leftHandedMode': leftHandedMode,
+        'fontScale': fontScale,
       };
 
   factory SettingsModel.fromJson(Map<String, dynamic> json) {
@@ -56,6 +61,7 @@ class SettingsModel {
       autoCheckMistakes: json['autoCheckMistakes'] as bool? ?? true,
       showTimer: json['showTimer'] as bool? ?? true,
       leftHandedMode: json['leftHandedMode'] as bool? ?? false,
+      fontScale: (json['fontScale'] as num?)?.toDouble() ?? 1.0,
     );
   }
 }

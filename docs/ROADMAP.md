@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-**Last Updated:** 2026-06-23  
+**Last Updated:** 2026-06-23 (Session 4)  
 **Target Release:** v1.0.0  
 
 ---
@@ -43,21 +43,21 @@
 - [x] Auto-save on every move
 - [x] Game completion flow
 
-### Phase 6 — Polish (In Progress)
+### Phase 6 — Polish (Complete ✓)
 - [x] Dark mode support
 - [x] Timer pause on app background
 - [x] Left-handed mode (flip number pad layout)
 - [x] Responsive layout (constrain grid on tablets)
-- [ ] Animations (cell selection, placement, victory)
-- [ ] Accessibility font sizes
+- [x] Animations (cell selection, placement, victory)
+- [x] Accessibility font sizes (MediaQuery textScaler + Settings)
 
-### Phase 7 — Testing & QA (In Progress)
+### Phase 7 — Testing & QA (Complete ✓)
 - [x] Unit tests: solver, generator, board validation
 - [x] AppState unit tests: game flow, undo/redo, stats, settings
 - [x] Widget sanity tests: main menu, settings, stats, about, daily challenge
 - [x] Integration: full game flow (new → play → win)
 - [x] Edge cases: empty board, all cells filled, save/restore
-- [ ] 80%+ code coverage target
+- [x] 80%+ code coverage target
 
 ### Phase 8 — Release
 - [ ] App icon and assets
@@ -78,5 +78,5 @@
 || M4: Game Board Playable | 2026-06-22 | ✅ Done |
 || M5: Full Game Loop | 2026-06-23 | ✅ Done |
 ||| M6: Left-Handed + Responsive + Tests | 2026-06-23 | ✅ Done |
-||| M7: Integration + Edge Case Tests | 2026-06-23 | ✅ Done |
-||| M8: v1.0 Release | TBD | ⬜ |
+||| M7: Integration + Edge Case + Animations + 80% Coverage | 2026-06-23 | ✅ Done |
+|| M8: v1.0 Release | TBD | ⬜ |

@@ -264,6 +264,7 @@ class AppState extends ChangeNotifier {
   void setAutoCheckMistakes(bool v) { settings.autoCheckMistakes = v; storage.saveSettings(settings); notifyListeners(); }
   void setShowTimer(bool v) { settings.showTimer = v; storage.saveSettings(settings); notifyListeners(); }
   void setLeftHandedMode(bool v) { settings.leftHandedMode = v; storage.saveSettings(settings); notifyListeners(); }
+  void setFontScale(double v) { settings.fontScale = v; storage.saveSettings(settings); notifyListeners(); }
 
   /// Called by the game timer each second.
   void tick() {
