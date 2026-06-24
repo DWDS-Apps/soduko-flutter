@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-|**Last Updated:** 2026-06-24 (Session 8)  
+|**Last Updated:** 2026-06-24 (Session 9)  
 **Target Release:** v1.0.0  
 
 ---
@@ -63,6 +63,8 @@
 - [x] App icon and assets
 - [x] README with setup instructions
 - [x] Version bump to 1.0.0
+- [x] Linux desktop build verified (`flutter build linux` — 23 KB ELF)
+- [x] Web build verified (`flutter build web` — compiles clean)
 - [ ] Android build verification (blocked: no Android SDK in CI)
 - [ ] iOS build verification (requires macOS + Xcode)
 
@@ -79,4 +81,4 @@
 ||| M5: Full Game Loop | 2026-06-23 | ✅ Done |
 ||| M6: Left-Handed + Responsive + Tests | 2026-06-23 | ✅ Done |
 ||| M7: Integration + Edge Case + Animations + 80% Coverage | 2026-06-23 | ✅ Done |
-||| M8: v1.0 Release | 2026-06-23 | ✅ Done (APK/iOS build verification blocked — no Android SDK/macOS in CI) |
+||| M8: v1.0 Release | 2026-06-24 | ✅ Done (Linux + Web builds verified; APK/iOS blocked — no Android SDK/macOS in CI) |
