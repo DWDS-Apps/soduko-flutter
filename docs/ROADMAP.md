@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-|**Last Updated:** 2026-06-23 (Session 7)  
+|**Last Updated:** 2026-06-24 (Session 8)  
 **Target Release:** v1.0.0  
 
 ---
