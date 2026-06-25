@@ -1,6 +1,6 @@
 # Tasks — Sudoku v1.0
 
-|**Last Updated:** 2026-06-25 (Session 13)  
+|**Last Updated:** 2026-06-25 (Session 14)  
 **Tracking method:** This file. Mark `[ ]` → `[x]` as completed.
 
 ---
@@ -94,4 +94,4 @@
 | Phase 5: Game Logic | ✅ Done |
 | Phase 6: Polish | ✅ Done |
 | Phase 7: Testing & QA | ✅ Done (80.3%) |
-||| Phase 8: Release | ✅ 7/9 done (Linux + Web builds verified, 145 tests passing; Android/iOS blocked by CI constraints) |
+| Phase 8: Release | ✅ 7/9 done (Web build re-verified Session 14, 145 tests passing, dart analyze clean; Android/iOS blocked by CI constraints; Linux build cmake unavailable) |
