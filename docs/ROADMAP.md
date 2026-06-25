@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-|**Last Updated:** 2026-06-24 (Session 10)  
+|**Last Updated:** 2026-06-25 (Session 11)  
 **Target Release:** v1.0.0  
 
 ---
@@ -65,7 +65,7 @@
 - [x] Version bump to 1.0.0
 - [x] Linux desktop build verified (`flutter build linux` — 23 KB ELF)
 - [x] Web build verified (`flutter build web` — compiles clean)
-- [x] All 149 tests passing, `dart analyze` clean (Session 10)
+- [x] All 145 tests passing, `dart analyze` clean (Session 11)
 - [ ] Android build verification (blocked: no Android SDK in CI)
 - [ ] iOS build verification (requires macOS + Xcode)
 

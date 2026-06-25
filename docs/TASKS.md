@@ -1,6 +1,6 @@
 # Tasks — Sudoku v1.0
 
-|**Last Updated:** 2026-06-24 (Session 10)  
+|**Last Updated:** 2026-06-25 (Session 11)  
 **Tracking method:** This file. Mark `[ ]` → `[x]` as completed.
 
 ---
@@ -75,7 +75,7 @@
 - [x] Generate app icon (adaptive Android + iOS) — custom Sudoku-themed icon via ImageMagick
 - [x] Linux desktop build verified: `flutter build linux` success (23 KB ELF binary)
 - [x] Web build verified: `flutter build web` compiles clean
-- [x] All 149 tests passing, `dart analyze` clean (Session 10)
+- [x] All 145 tests passing, `dart analyze` clean (Session 11)
 - [ ] Verify Android build: `flutter build apk` (blocked: no Android SDK in CI)
 - [ ] Verify iOS build: `flutter build ios` (requires macOS + Xcode)
 
@@ -92,4 +92,4 @@
 | Phase 5: Game Logic | ✅ Done |
 | Phase 6: Polish | ✅ Done |
 | Phase 7: Testing & QA | ✅ Done (80.3%) |
-||| Phase 8: Release | ✅ 7/9 done (Linux + Web builds verified; Android/iOS blocked by CI constraints) |
+||| Phase 8: Release | ✅ 7/9 done (Linux + Web builds verified, 145 tests passing; Android/iOS blocked by CI constraints) |
