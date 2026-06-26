@@ -101,7 +101,8 @@ void main() {
     });
 
     test('init preserves saved settings and stats', () async {
-      await storage.saveSettings(SettingsModel(darkMode: true, soundEnabled: false));
+      await storage
+          .saveSettings(SettingsModel(darkMode: true, soundEnabled: false));
       await storage.saveStats(PlayerStats(gamesPlayed: 5, gamesWon: 3));
       await appState.init();
       expect(appState.settings.darkMode, true);
@@ -166,10 +167,12 @@ void main() {
       }
       expect(targetRow, greaterThanOrEqualTo(0));
 
-      final originalValue = appState.gameState!.board.getCell(targetRow, targetCol).value;
+      final originalValue =
+          appState.gameState!.board.getCell(targetRow, targetCol).value;
       appState.selectCell(targetRow, targetCol);
       appState.inputNumber(9);
-      expect(appState.gameState!.board.getCell(targetRow, targetCol).value, originalValue);
+      expect(appState.gameState!.board.getCell(targetRow, targetCol).value,
+          originalValue);
     });
 
     test('eraseCell clears selected non-given cell', () async {
@@ -222,9 +225,11 @@ void main() {
       appState.inputNumber(5);
       expect(appState.gameState!.board.getCell(tr, tc).value, 5);
 
-      expect(appState.gameState!.canUndo, isTrue, reason: 'Must have undo after move');
+      expect(appState.gameState!.canUndo, isTrue,
+          reason: 'Must have undo after move');
       appState.undo();
-      expect(appState.gameState!.board.getCell(tr, tc).value, 0, reason: 'Undo should clear cell value');
+      expect(appState.gameState!.board.getCell(tr, tc).value, 0,
+          reason: 'Undo should clear cell value');
     });
 
     test('redo restores an undone move', () async {
@@ -239,9 +244,11 @@ void main() {
       appState.undo();
       expect(appState.gameState!.board.getCell(tr, tc).value, 0);
 
-      expect(appState.gameState!.canRedo, isTrue, reason: 'Must have redo after undo');
+      expect(appState.gameState!.canRedo, isTrue,
+          reason: 'Must have redo after undo');
       appState.redo();
-      expect(appState.gameState!.board.getCell(tr, tc).value, 5, reason: 'Redo should restore cell value');
+      expect(appState.gameState!.board.getCell(tr, tc).value, 5,
+          reason: 'Redo should restore cell value');
     });
 
     test('undo/redo with no history is no-op', () async {
@@ -327,19 +334,23 @@ void main() {
       expect(appState.getHighlightedCells(), isEmpty);
     });
 
-    test('getHighlightedCells returns row/col/box when cell selected', () async {
+    test('getHighlightedCells returns row/col/box when cell selected',
+        () async {
       await appState.startNewGame(Difficulty.easy);
       appState.selectCell(4, 3);
       final highlighted = appState.getHighlightedCells();
       for (int c = 0; c < 9; c++) {
-        expect(highlighted.contains(4 * 9 + c), isTrue, reason: 'row cell ($c)');
+        expect(highlighted.contains(4 * 9 + c), isTrue,
+            reason: 'row cell ($c)');
       }
       for (int r = 0; r < 9; r++) {
-        expect(highlighted.contains(r * 9 + 3), isTrue, reason: 'col cell ($r)');
+        expect(highlighted.contains(r * 9 + 3), isTrue,
+            reason: 'col cell ($r)');
       }
       for (int r = 3; r < 6; r++) {
         for (int c = 3; c < 6; c++) {
-          expect(highlighted.contains(r * 9 + c), isTrue, reason: 'box cell ($r,$c)');
+          expect(highlighted.contains(r * 9 + c), isTrue,
+              reason: 'box cell ($r,$c)');
         }
       }
     });

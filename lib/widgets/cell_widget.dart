@@ -35,9 +35,11 @@ class CellWidget extends StatelessWidget {
     if (isSelected) {
       bgColor = isDarkMode ? AppTheme.selectedCellDark : AppTheme.selectedCell;
     } else if (isHighlighted) {
-      bgColor = isDarkMode ? AppTheme.highlightedCellDark : AppTheme.highlightedCell;
+      bgColor =
+          isDarkMode ? AppTheme.highlightedCellDark : AppTheme.highlightedCell;
     } else if (showSameValue && value != 0) {
-      bgColor = isDarkMode ? AppTheme.highlightedCellDark : AppTheme.highlightedCell;
+      bgColor =
+          isDarkMode ? AppTheme.highlightedCellDark : AppTheme.highlightedCell;
     }
 
     Color textColor;
@@ -91,7 +93,9 @@ class CellWidget extends StatelessWidget {
                     '$num',
                     style: TextStyle(
                       fontSize: 8,
-                      color: isDarkMode ? AppTheme.noteTextDark : AppTheme.noteText,
+                      color: isDarkMode
+                          ? AppTheme.noteTextDark
+                          : AppTheme.noteText,
                     ),
                   )
                 : const SizedBox(),

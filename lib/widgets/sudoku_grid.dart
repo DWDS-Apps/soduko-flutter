@@ -25,7 +25,9 @@ class SudokuGrid extends StatelessWidget {
       aspectRatio: 1,
       child: Container(
         decoration: BoxDecoration(
-          color: isDarkMode ? AppTheme.boardBackgroundDark : AppTheme.boardBackground,
+          color: isDarkMode
+              ? AppTheme.boardBackgroundDark
+              : AppTheme.boardBackground,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
@@ -52,23 +54,30 @@ class SudokuGrid extends StatelessWidget {
             final isSelected =
                 row == appState.selectedRow && col == appState.selectedCol;
             final isHighlighted = highlightedCells.contains(cellIndex);
-            final showSameValue = appState
-                .getSameNumberCells(cell.value)
-                .contains(cellIndex);
+            final showSameValue =
+                appState.getSameNumberCells(cell.value).contains(cellIndex);
 
             return Container(
               decoration: BoxDecoration(
                 border: Border(
                   right: BorderSide(
                     color: col % 3 == 2
-                        ? (isDarkMode ? AppTheme.boxBorderDark : AppTheme.boxBorder)
-                        : (isDarkMode ? AppTheme.cellBorderDark : AppTheme.cellBorder),
+                        ? (isDarkMode
+                            ? AppTheme.boxBorderDark
+                            : AppTheme.boxBorder)
+                        : (isDarkMode
+                            ? AppTheme.cellBorderDark
+                            : AppTheme.cellBorder),
                     width: col % 3 == 2 ? 2 : 0.5,
                   ),
                   bottom: BorderSide(
                     color: row % 3 == 2
-                        ? (isDarkMode ? AppTheme.boxBorderDark : AppTheme.boxBorder)
-                        : (isDarkMode ? AppTheme.cellBorderDark : AppTheme.cellBorder),
+                        ? (isDarkMode
+                            ? AppTheme.boxBorderDark
+                            : AppTheme.boxBorder)
+                        : (isDarkMode
+                            ? AppTheme.cellBorderDark
+                            : AppTheme.cellBorder),
                     width: row % 3 == 2 ? 2 : 0.5,
                   ),
                   left: col == 0

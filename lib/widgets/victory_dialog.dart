@@ -77,7 +77,8 @@ class VictoryDialog extends StatelessWidget {
                 if (isNewBest) ...[
                   const SizedBox(height: 4),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppTheme.victoryGold,
                       borderRadius: BorderRadius.circular(12),
@@ -96,7 +97,8 @@ class VictoryDialog extends StatelessWidget {
                 _StatRow(
                   icon: Icons.timer,
                   label: 'Time',
-                  value: '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
+                  value:
+                      '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
                 ),
                 const SizedBox(height: 8),
                 _StatRow(

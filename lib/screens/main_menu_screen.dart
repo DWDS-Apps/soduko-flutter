@@ -90,61 +90,111 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 children: [
                   const SizedBox(height: 20),
                   Container(
-                    width: 90, height: 90,
+                    width: 90,
+                    height: 90,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(22),
-                      boxShadow: [BoxShadow(
-                        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.4),
-                        blurRadius: 20, offset: const Offset(0, 8),
-                      )],
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withValues(alpha: 0.4),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                        )
+                      ],
                     ),
-                    child: const Icon(Icons.grid_on, size: 48, color: Colors.white),
+                    child: const Icon(Icons.grid_on,
+                        size: 48, color: Colors.white),
                   ),
                   const SizedBox(height: 16),
-                  Text(AppConstants.appName, style: TextStyle(
-                    fontSize: 36, fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary)),
+                  Text(AppConstants.appName,
+                      style: TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary)),
                   const SizedBox(height: 12),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .surfaceContainerHighest
+                          .withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _MiniStat(icon: Icons.emoji_events, value: '${stats.gamesWon}', label: 'Won'),
-                        Container(width: 1, height: 30, color: Colors.grey.shade300),
-                        _MiniStat(icon: Icons.local_fire_department, value: '${stats.currentStreak}', label: 'Streak'),
-                        Container(width: 1, height: 30, color: Colors.grey.shade300),
-                        _MiniStat(icon: Icons.timer,
-                          value: stats.bestTimes.values.isNotEmpty
-                              ? '${stats.bestTimes.values.reduce((a, b) => a < b ? a : b) ~/ 60}m' : '--',
-                          label: 'Best'),
+                        _MiniStat(
+                            icon: Icons.emoji_events,
+                            value: '${stats.gamesWon}',
+                            label: 'Won'),
+                        Container(
+                            width: 1, height: 30, color: Colors.grey.shade300),
+                        _MiniStat(
+                            icon: Icons.local_fire_department,
+                            value: '${stats.currentStreak}',
+                            label: 'Streak'),
+                        Container(
+                            width: 1, height: 30, color: Colors.grey.shade300),
+                        _MiniStat(
+                            icon: Icons.timer,
+                            value: stats.bestTimes.values.isNotEmpty
+                                ? '${stats.bestTimes.values.reduce((a, b) => a < b ? a : b) ~/ 60}m'
+                                : '--',
+                            label: 'Best'),
                       ],
                     ),
                   ),
                   const SizedBox(height: 32),
-
                   if (hasSave) ...[
-                    _MenuButton(icon: Icons.play_arrow, label: 'Continue Game', color: AppTheme.primaryColor, onTap: _continueGame),
+                    _MenuButton(
+                        icon: Icons.play_arrow,
+                        label: 'Continue Game',
+                        color: AppTheme.primaryColor,
+                        onTap: _continueGame),
                     const SizedBox(height: 12),
                   ],
-                  _MenuButton(icon: Icons.add_circle_outline, label: 'New Game', color: Colors.orange, onTap: _showDifficultySelector),
+                  _MenuButton(
+                      icon: Icons.add_circle_outline,
+                      label: 'New Game',
+                      color: Colors.orange,
+                      onTap: _showDifficultySelector),
                   const SizedBox(height: 12),
-                  _MenuButton(icon: Icons.bar_chart, label: 'Statistics', color: Colors.purple,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => StatisticsScreen(state: widget.state)))),
+                  _MenuButton(
+                      icon: Icons.bar_chart,
+                      label: 'Statistics',
+                      color: Colors.purple,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) =>
+                              StatisticsScreen(state: widget.state)))),
                   const SizedBox(height: 12),
-                  _MenuButton(icon: Icons.settings, label: 'Settings', color: Colors.grey,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SettingsScreen(state: widget.state)))),
+                  _MenuButton(
+                      icon: Icons.settings,
+                      label: 'Settings',
+                      color: Colors.grey,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) =>
+                              SettingsScreen(state: widget.state)))),
                   const SizedBox(height: 12),
-                  _MenuButton(icon: Icons.calendar_today, label: 'Daily Challenge', color: Colors.teal,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => DailyChallengeScreen(state: widget.state)))),
+                  _MenuButton(
+                      icon: Icons.calendar_today,
+                      label: 'Daily Challenge',
+                      color: Colors.teal,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) =>
+                              DailyChallengeScreen(state: widget.state)))),
                   const SizedBox(height: 12),
-                  _MenuButton(icon: Icons.info_outline, label: 'About', color: Colors.blueGrey,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AboutScreen()))),
+                  _MenuButton(
+                      icon: Icons.info_outline,
+                      label: 'About',
+                      color: Colors.blueGrey,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const AboutScreen()))),
                   const SizedBox(height: 40),
                 ],
               ),
@@ -157,23 +207,34 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 }
 
 class _MiniStat extends StatelessWidget {
-  final IconData icon; final String value; final String label;
-  const _MiniStat({required this.icon, required this.value, required this.label});
+  final IconData icon;
+  final String value;
+  final String label;
+  const _MiniStat(
+      {required this.icon, required this.value, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: [
       Icon(icon, size: 18, color: Theme.of(context).colorScheme.primary),
       const SizedBox(height: 2),
-      Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      Text(value,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       Text(label, style: TextStyle(fontSize: 11, color: Colors.grey.shade600)),
     ]);
   }
 }
 
 class _MenuButton extends StatelessWidget {
-  final IconData icon; final String label; final Color color; final VoidCallback onTap;
-  const _MenuButton({required this.icon, required this.label, required this.color, required this.onTap});
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+  const _MenuButton(
+      {required this.icon,
+      required this.label,
+      required this.color,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -190,8 +251,11 @@ class _MenuButton extends StatelessWidget {
             child: Row(children: [
               Icon(icon, color: color, size: 26),
               const SizedBox(width: 16),
-              Text(label, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.onSurface)),
+              Text(label,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onSurface)),
               const Spacer(),
               Icon(Icons.chevron_right, color: Colors.grey.shade400),
             ]),

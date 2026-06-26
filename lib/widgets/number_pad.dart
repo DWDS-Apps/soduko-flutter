@@ -49,11 +49,8 @@ class NumberPad extends StatelessWidget {
               final number = index + 1;
               final isUsed = usedNumbers.contains(number);
               final isSelectedNumber = appState.selectedRow >= 0 &&
-                  appState
-                          .gameState!
-                          .board
-                          .getCell(appState.selectedRow,
-                              appState.selectedCol)
+                  appState.gameState!.board
+                          .getCell(appState.selectedRow, appState.selectedCol)
                           .value ==
                       number;
 
@@ -78,9 +75,8 @@ class NumberPad extends StatelessWidget {
                       onTap: () => appState.eraseCell(),
                     ),
                     _ActionButton(
-                      icon: appState.notesMode
-                          ? Icons.edit_note
-                          : Icons.edit_off,
+                      icon:
+                          appState.notesMode ? Icons.edit_note : Icons.edit_off,
                       label: appState.notesMode ? 'Notes ON' : 'Notes',
                       isActive: appState.notesMode,
                       isDarkMode: isDarkMode,
@@ -124,9 +120,8 @@ class NumberPad extends StatelessWidget {
                       onTap: () => appState.useHint(),
                     ),
                     _ActionButton(
-                      icon: appState.notesMode
-                          ? Icons.edit_note
-                          : Icons.edit_off,
+                      icon:
+                          appState.notesMode ? Icons.edit_note : Icons.edit_off,
                       label: appState.notesMode ? 'Notes ON' : 'Notes',
                       isActive: appState.notesMode,
                       isDarkMode: isDarkMode,

@@ -19,7 +19,8 @@ void main() {
     });
 
     test('creates cell with values', () {
-      final cell = SudokuCell(row: 0, col: 8, value: 7, isGiven: true, notes: {1, 2, 3});
+      final cell =
+          SudokuCell(row: 0, col: 8, value: 7, isGiven: true, notes: {1, 2, 3});
       expect(cell.value, 7);
       expect(cell.isGiven, isTrue);
       expect(cell.notes, {1, 2, 3});
@@ -35,7 +36,7 @@ void main() {
       expect(copy.col, cell.col);
       expect(copy.value, cell.value);
       expect(copy.notes, cell.notes);
-      
+
       // Modify original — copy should be unaffected
       cell.value = 9;
       cell.notes.add(7);
@@ -44,7 +45,8 @@ void main() {
     });
 
     test('JSON roundtrip', () {
-      final cell = SudokuCell(row: 7, col: 2, value: 3, isGiven: true, notes: {1, 8});
+      final cell =
+          SudokuCell(row: 7, col: 2, value: 3, isGiven: true, notes: {1, 8});
       final json = cell.toJson();
       final restored = SudokuCell.fromJson(json);
       expect(restored.row, cell.row);
@@ -83,7 +85,8 @@ void main() {
     });
 
     test('fromGrid creates board with given values', () {
-      final grid = List.generate(9, (r) => List.generate(9, (c) => (r == c) ? 1 : 0));
+      final grid =
+          List.generate(9, (r) => List.generate(9, (c) => (r == c) ? 1 : 0));
       final board = SudokuBoard.fromGrid(grid);
       for (int i = 0; i < 9; i++) {
         expect(board.getCell(i, i).value, 1);
@@ -97,7 +100,7 @@ void main() {
       final board = SudokuBoard.empty();
       board.getCell(4, 4).notes = {1, 2, 3};
       board.getCell(4, 4).isHint = true;
-      
+
       board.setCellValue(4, 4, 7);
       expect(board.getCell(4, 4).value, 7);
       expect(board.getCell(4, 4).notes, isEmpty);
@@ -108,7 +111,7 @@ void main() {
       final board = SudokuBoard.empty();
       board.toggleNote(0, 0, 5);
       expect(board.getCell(0, 0).notes, {5});
-      
+
       board.toggleNote(0, 0, 5);
       expect(board.getCell(0, 0).notes, isEmpty);
     });
@@ -178,19 +181,20 @@ void main() {
     test('copy produces independent board', () {
       final board = SudokuBoard.empty();
       board.setCellValue(2, 2, 8);
-      
+
       final copy = board.copy();
       expect(copy.getCell(2, 2).value, 8);
-      
+
       board.setCellValue(2, 2, 3);
-      expect(copy.getCell(2, 2).value, 8); // original modification doesn't affect copy
+      expect(copy.getCell(2, 2).value,
+          8); // original modification doesn't affect copy
     });
 
     test('toValueGrid returns correct values', () {
       final board = SudokuBoard.empty();
       board.setCellValue(0, 0, 1);
       board.setCellValue(4, 7, 9);
-      
+
       final grid = board.toValueGrid();
       expect(grid[0][0], 1);
       expect(grid[4][7], 9);
@@ -218,7 +222,7 @@ void main() {
       final boardEmpty = SudokuBoard.empty();
       final json = boardEmpty.toJson();
       final restored = SudokuBoard.fromJson(json);
-      
+
       for (int r = 0; r < 9; r++) {
         for (int c = 0; c < 9; c++) {
           expect(restored.getCell(r, c).value, 0);

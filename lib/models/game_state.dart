@@ -80,7 +80,8 @@ class GameState {
     return GameState(
       board: SudokuBoard.fromJson(json['board'] as Map<String, dynamic>),
       solution: SudokuBoard.fromJson(json['solution'] as Map<String, dynamic>),
-      difficulty: Difficulty.fromString(json['difficulty'] as String? ?? 'easy'),
+      difficulty:
+          Difficulty.fromString(json['difficulty'] as String? ?? 'easy'),
       status: GameStatus.values.firstWhere(
         (s) => s.name == json['status'],
         orElse: () => GameStatus.paused,
@@ -140,10 +141,9 @@ class Move {
               ?.map((e) => e as int)
               .toSet() ??
           {},
-      newNotes: (json['newNotes'] as List<dynamic>?)
-              ?.map((e) => e as int)
-              .toSet() ??
-          {},
+      newNotes:
+          (json['newNotes'] as List<dynamic>?)?.map((e) => e as int).toSet() ??
+              {},
     );
   }
 }

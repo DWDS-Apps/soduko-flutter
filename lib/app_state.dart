@@ -51,7 +51,8 @@ class AppState extends ChangeNotifier {
     elapsedSeconds = 0;
     notifyListeners();
 
-    final (puzzleGrid, solutionGrid) = generator.generatePuzzle(difficulty.startingClues);
+    final (puzzleGrid, solutionGrid) =
+        generator.generatePuzzle(difficulty.startingClues);
     final board = SudokuBoard.fromGrid(puzzleGrid);
     final solution = SudokuBoard.fromGrid(solutionGrid);
 
@@ -92,14 +93,18 @@ class AppState extends ChangeNotifier {
       gameState!.board.toggleNote(selectedRow, selectedCol, number);
       final newNotes = Set<int>.from(cell.notes);
       _recordMove(Move(
-        row: selectedRow, col: selectedCol,
-        previousValue: 0, newValue: 0,
-        previousNotes: prevNotes, newNotes: newNotes,
+        row: selectedRow,
+        col: selectedCol,
+        previousValue: 0,
+        newValue: 0,
+        previousNotes: prevNotes,
+        newNotes: newNotes,
       ));
     } else {
       final previousValue = cell.value;
       final previousNotes = Set<int>.from(cell.notes);
-      final isValid = gameState!.board.isValidPlacement(selectedRow, selectedCol, number);
+      final isValid =
+          gameState!.board.isValidPlacement(selectedRow, selectedCol, number);
       gameState!.board.setCellValue(selectedRow, selectedCol, number);
 
       if (!isValid) {
@@ -108,9 +113,12 @@ class AppState extends ChangeNotifier {
       gameState!.board.updateConflicts();
 
       _recordMove(Move(
-        row: selectedRow, col: selectedCol,
-        previousValue: previousValue, newValue: number,
-        previousNotes: previousNotes, newNotes: {},
+        row: selectedRow,
+        col: selectedCol,
+        previousValue: previousValue,
+        newValue: number,
+        previousNotes: previousNotes,
+        newNotes: {},
       ));
 
       if (gameState!.board.isComplete() && !gameState!.board.hasConflicts()) {
@@ -221,13 +229,18 @@ class AppState extends ChangeNotifier {
 
   void restartPuzzle() {
     if (gameState == null) return;
-    final (puzzleGrid, solutionGrid) = generator.generatePuzzle(gameState!.difficulty.startingClues);
+    final (puzzleGrid, solutionGrid) =
+        generator.generatePuzzle(gameState!.difficulty.startingClues);
     final board = SudokuBoard.fromGrid(puzzleGrid);
     final solution = SudokuBoard.fromGrid(solutionGrid);
     elapsedSeconds = 0;
     selectedRow = -1;
     selectedCol = -1;
-    gameState = GameState(board: board, solution: solution, difficulty: gameState!.difficulty, startTime: DateTime.now());
+    gameState = GameState(
+        board: board,
+        solution: solution,
+        difficulty: gameState!.difficulty,
+        startTime: DateTime.now());
     notifyListeners();
     _autoSave();
   }
@@ -239,32 +252,75 @@ class AppState extends ChangeNotifier {
       history.removeRange(index + 1, history.length);
     }
     history.add(move);
-    gameState = gameState!.copyWith(history: history, historyIndex: history.length - 1);
+    gameState =
+        gameState!.copyWith(history: history, historyIndex: history.length - 1);
   }
 
   void _completeGame() {
-    stats.recordGame(gameState!.difficulty, elapsedSeconds, true, hintsUsed: gameState!.hintsUsed);
+    stats.recordGame(gameState!.difficulty, elapsedSeconds, true,
+        hintsUsed: gameState!.hintsUsed);
     storage.saveStats(stats);
-    gameState = gameState!.copyWith(status: GameStatus.won, completedTime: DateTime.now());
+    gameState = gameState!
+        .copyWith(status: GameStatus.won, completedTime: DateTime.now());
     storage.deleteSave();
     notifyListeners();
   }
 
   Future<void> _autoSave() async {
     if (gameState != null && gameState!.status != GameStatus.won) {
-      await storage.saveGame(gameState!.copyWith(elapsedSeconds: elapsedSeconds));
+      await storage
+          .saveGame(gameState!.copyWith(elapsedSeconds: elapsedSeconds));
     }
   }
 
   // ---- Settings ----
-  void setDarkMode(bool v) { settings.darkMode = v; storage.saveSettings(settings); notifyListeners(); }
-  void setSoundEnabled(bool v) { settings.soundEnabled = v; storage.saveSettings(settings); notifyListeners(); }
-  void setVibrationEnabled(bool v) { settings.vibrationEnabled = v; storage.saveSettings(settings); notifyListeners(); }
-  void setHighlightDuplicates(bool v) { settings.highlightDuplicates = v; storage.saveSettings(settings); notifyListeners(); }
-  void setAutoCheckMistakes(bool v) { settings.autoCheckMistakes = v; storage.saveSettings(settings); notifyListeners(); }
-  void setShowTimer(bool v) { settings.showTimer = v; storage.saveSettings(settings); notifyListeners(); }
-  void setLeftHandedMode(bool v) { settings.leftHandedMode = v; storage.saveSettings(settings); notifyListeners(); }
-  void setFontScale(double v) { settings.fontScale = v; storage.saveSettings(settings); notifyListeners(); }
+  void setDarkMode(bool v) {
+    settings.darkMode = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setSoundEnabled(bool v) {
+    settings.soundEnabled = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setVibrationEnabled(bool v) {
+    settings.vibrationEnabled = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setHighlightDuplicates(bool v) {
+    settings.highlightDuplicates = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setAutoCheckMistakes(bool v) {
+    settings.autoCheckMistakes = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setShowTimer(bool v) {
+    settings.showTimer = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setLeftHandedMode(bool v) {
+    settings.leftHandedMode = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
+
+  void setFontScale(double v) {
+    settings.fontScale = v;
+    storage.saveSettings(settings);
+    notifyListeners();
+  }
 
   /// Called by the game timer each second.
   void tick() {

@@ -115,23 +115,34 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         title: Column(children: [
           Text(state.difficulty.label, style: const TextStyle(fontSize: 14)),
           if (appState.settings.showTimer)
-            GameTimerWidget(seconds: appState.elapsedSeconds, running: state.status == GameStatus.playing),
+            GameTimerWidget(
+                seconds: appState.elapsedSeconds,
+                running: state.status == GameStatus.playing),
         ]),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () { appState.pauseGame(); setState(() => _showPauseOverlay = true); },
+          onPressed: () {
+            appState.pauseGame();
+            setState(() => _showPauseOverlay = true);
+          },
         ),
         actions: [
           if (state.mistakes > 0)
             Padding(
               padding: const EdgeInsets.only(right: 4),
-              child: Center(child: Text('✕ ${state.mistakes}',
-                style: TextStyle(color: Colors.red.shade400, fontWeight: FontWeight.w600))),
+              child: Center(
+                  child: Text('✕ ${state.mistakes}',
+                      style: TextStyle(
+                          color: Colors.red.shade400,
+                          fontWeight: FontWeight.w600))),
             ),
           PopupMenuButton<String>(
             onSelected: (v) {
               if (v == 'restart') _confirmRestart();
-              if (v == 'pause') { appState.pauseGame(); setState(() => _showPauseOverlay = true); }
+              if (v == 'pause') {
+                appState.pauseGame();
+                setState(() => _showPauseOverlay = true);
+              }
             },
             itemBuilder: (_) => [
               const PopupMenuItem(value: 'restart', child: Text('Restart')),
@@ -146,12 +157,16 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('Hints: ${state.hintsUsed}/${AppConstants.maxHints}',
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-                Text('Mistakes: ${state.mistakes}',
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-              ]),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Hints: ${state.hintsUsed}/${AppConstants.maxHints}',
+                        style: TextStyle(
+                            color: Colors.grey.shade600, fontSize: 13)),
+                    Text('Mistakes: ${state.mistakes}',
+                        style: TextStyle(
+                            color: Colors.grey.shade600, fontSize: 13)),
+                  ]),
             ),
             const SizedBox(height: 8),
             Expanded(
@@ -165,14 +180,18 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                           : constraints.maxWidth;
                       return SizedBox(
                         width: maxGridWidth,
-                        child: SudokuGrid(appState: appState, isDarkMode: isDark),
+                        child:
+                            SudokuGrid(appState: appState, isDarkMode: isDark),
                       );
                     },
                   ),
                 ),
               ),
             ),
-            NumberPad(appState: appState, isDarkMode: isDark, leftHanded: appState.settings.leftHandedMode),
+            NumberPad(
+                appState: appState,
+                isDarkMode: isDark,
+                leftHanded: appState.settings.leftHandedMode),
           ]),
           if (_showPauseOverlay) _pauseOverlay(appState),
         ],
@@ -189,27 +208,39 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           children: [
             const Icon(Icons.pause_circle, size: 80, color: Colors.white),
             const SizedBox(height: 16),
-            const Text('Paused', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white)),
+            const Text('Paused',
+                style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
             const SizedBox(height: 8),
-            Text('Time: ${appState.elapsedSeconds ~/ 60}:${(appState.elapsedSeconds % 60).toString().padLeft(2, '0')}',
-              style: const TextStyle(fontSize: 16, color: Colors.white70)),
+            Text(
+                'Time: ${appState.elapsedSeconds ~/ 60}:${(appState.elapsedSeconds % 60).toString().padLeft(2, '0')}',
+                style: const TextStyle(fontSize: 16, color: Colors.white70)),
             const SizedBox(height: 32),
             ElevatedButton.icon(
-              onPressed: () { appState.resumeGame(); setState(() => _showPauseOverlay = false); },
+              onPressed: () {
+                appState.resumeGame();
+                setState(() => _showPauseOverlay = false);
+              },
               icon: const Icon(Icons.play_arrow),
               label: const Text('Resume'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white, foregroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                textStyle: const TextStyle(fontSize: 18)),
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.blue,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 18)),
             ),
             const SizedBox(height: 12),
             TextButton(
-              onPressed: _confirmRestart,
-              child: const Text('Restart', style: TextStyle(color: Colors.white70))),
+                onPressed: _confirmRestart,
+                child: const Text('Restart',
+                    style: TextStyle(color: Colors.white70))),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Quit Game', style: TextStyle(color: Colors.white70))),
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Quit Game',
+                    style: TextStyle(color: Colors.white70))),
           ],
         ),
       ),
@@ -223,8 +254,15 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         title: const Text('Restart Puzzle'),
         content: const Text('All progress will be lost.'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () { Navigator.pop(ctx); _showPauseOverlay = false; widget.state.restartPuzzle(); }, child: const Text('Restart')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+                _showPauseOverlay = false;
+                widget.state.restartPuzzle();
+              },
+              child: const Text('Restart')),
         ],
       ),
     );

@@ -12,7 +12,7 @@ void main() {
 
     test('generatePuzzle returns a puzzle and solution', () {
       final (puzzle, solution) = generator.generatePuzzle(32);
-      
+
       // Puzzle should have exactly 32 given clues (or close to it for random generation)
       int givenCount = 0;
       for (int r = 0; r < 9; r++) {
@@ -33,7 +33,7 @@ void main() {
 
     test('generatePuzzle creates a valid puzzle (no conflicts)', () {
       final (puzzle, _) = generator.generatePuzzle(38);
-      
+
       // Verify no conflicts in the clues
       for (int r = 0; r < 9; r++) {
         for (int c = 0; c < 9; c++) {
@@ -70,7 +70,7 @@ void main() {
     test('generates different puzzles for different difficulties', () {
       final (easyPuzzle, _) = generator.generatePuzzle(38);
       final (hardPuzzle, _) = generator.generatePuzzle(22);
-      
+
       int easyClues = 0, hardClues = 0;
       for (int r = 0; r < 9; r++) {
         for (int c = 0; c < 9; c++) {
@@ -83,20 +83,20 @@ void main() {
 
     test('solution is valid (all rows, cols, boxes have 1-9)', () {
       final (_, solution) = generator.generatePuzzle(32);
-      
+
       // Check rows
       for (int r = 0; r < 9; r++) {
         expect({...solution[r]}.length, 9,
             reason: 'Row $r does not have all 9 numbers');
       }
-      
+
       // Check columns
       for (int c = 0; c < 9; c++) {
         final colSet = {for (int r = 0; r < 9; r++) solution[r][c]};
         expect(colSet.length, 9,
             reason: 'Column $c does not have all 9 numbers');
       }
-      
+
       // Check 3x3 boxes
       for (int br = 0; br < 3; br++) {
         for (int bc = 0; bc < 3; bc++) {
@@ -117,10 +117,10 @@ void main() {
     test('generateDailyPuzzle produces deterministic output', () {
       final generator = PuzzleGenerator();
       final date = DateTime(2026, 6, 23);
-      
+
       final (puzzle1, _) = generator.generateDailyPuzzle(date);
       final (puzzle2, _) = generator.generateDailyPuzzle(date);
-      
+
       // Same date should produce same puzzle
       for (int r = 0; r < 9; r++) {
         for (int c = 0; c < 9; c++) {
@@ -132,10 +132,10 @@ void main() {
 
     test('different dates produce different puzzles', () {
       final generator = PuzzleGenerator();
-      
+
       final (puzzle1, _) = generator.generateDailyPuzzle(DateTime(2026, 6, 22));
       final (puzzle2, _) = generator.generateDailyPuzzle(DateTime(2026, 6, 23));
-      
+
       // They should differ somewhere (extremely unlikely to be identical)
       bool different = false;
       for (int r = 0; r < 9 && !different; r++) {

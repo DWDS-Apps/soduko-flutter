@@ -83,7 +83,7 @@ void main() {
       final grid = List.generate(9, (_) => List.filled(9, 0));
       final solved = SudokuSolver.solve(grid);
       expect(solved, isTrue);
-      
+
       // After solving, the grid should be valid
       for (int r = 0; r < 9; r++) {
         for (int c = 0; c < 9; c++) {
@@ -150,7 +150,7 @@ void main() {
       final board = List.generate(9, (_) => List.filled(9, 5));
       final solution = List.generate(9, (_) => List.filled(9, 5));
       board[2][2] = 0; // Make one cell empty
-    
+
       final hint = SudokuSolver.getHint(board, solution);
       expect(hint, isNotNull);
       // Should return the first empty cell (2,2) with value 5

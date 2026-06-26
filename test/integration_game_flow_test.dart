@@ -90,7 +90,8 @@ void main() {
       appState = AppState(storage);
     });
 
-    test('full game lifecycle — start, play moves, win, verify stats', () async {
+    test('full game lifecycle — start, play moves, win, verify stats',
+        () async {
       // ---- 1. Start a new game ----
       await appState.startNewGame(Difficulty.medium);
       expect(appState.gameState, isNotNull);
@@ -132,12 +133,18 @@ void main() {
       // ---- 4. Undo and redo ----
       expect(appState.gameState!.canUndo, isTrue);
       appState.undo();
-      expect(appState.gameState!.board.getCell(editableCells[2].$1, editableCells[2].$2).value, 0);
+      expect(
+          appState.gameState!.board
+              .getCell(editableCells[2].$1, editableCells[2].$2)
+              .value,
+          0);
 
       expect(appState.gameState!.canRedo, isTrue);
       appState.redo();
       expect(
-        appState.gameState!.board.getCell(editableCells[2].$1, editableCells[2].$2).value,
+        appState.gameState!.board
+            .getCell(editableCells[2].$1, editableCells[2].$2)
+            .value,
         solutionGrid[editableCells[2].$1][editableCells[2].$2],
       );
 
@@ -208,7 +215,8 @@ void main() {
       }
     });
 
-    test('eraseCell clears value and notes, does not affect given cells', () async {
+    test('eraseCell clears value and notes, does not affect given cells',
+        () async {
       await appState.startNewGame(Difficulty.easy);
 
       final editableCells = _allEditableCells(appState);

@@ -27,7 +27,8 @@ class SudokuApp extends StatelessWidget {
         final isDark = appState.settings.darkMode;
         final fontScale = appState.settings.fontScale;
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(fontScale)),
+          data: MediaQuery.of(context)
+              .copyWith(textScaler: TextScaler.linear(fontScale)),
           child: MaterialApp(
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,

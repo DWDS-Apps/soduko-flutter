@@ -153,7 +153,8 @@ void main() {
         expect(board.hasConflicts(), isTrue);
       });
 
-      test('all cells filled correctly isComplete true, hasConflicts false', () {
+      test('all cells filled correctly isComplete true, hasConflicts false',
+          () {
         final board = SudokuBoard.empty();
         final grid = [
           [5, 3, 4, 6, 7, 8, 9, 1, 2],
@@ -203,7 +204,8 @@ void main() {
         // so elapsedSeconds is captured by auto-save
         for (int r = 0; r < 9 && movesMade < 2; r++) {
           for (int c = 0; c < 9 && movesMade < 2; c++) {
-            if (!board.getCell(r, c).isGiven && board.getCell(r, c).value == 0) {
+            if (!board.getCell(r, c).isGiven &&
+                board.getCell(r, c).value == 0) {
               appState.selectCell(r, c);
               appState.inputNumber(solution[r][c]);
               movesMade++;
@@ -219,7 +221,8 @@ void main() {
         // Make the 3rd move — this auto-saves with elapsedSeconds=2
         for (int r = 0; r < 9; r++) {
           for (int c = 0; c < 9; c++) {
-            if (!board.getCell(r, c).isGiven && board.getCell(r, c).value == 0) {
+            if (!board.getCell(r, c).isGiven &&
+                board.getCell(r, c).value == 0) {
               appState.selectCell(r, c);
               appState.inputNumber(solution[r][c]);
               movesMade++;
@@ -408,7 +411,8 @@ void main() {
         for (int r = 0; r < 9 && cellA == null; r++) {
           final emptyInRow = <int>[];
           for (int c = 0; c < 9; c++) {
-            if (!board.getCell(r, c).isGiven && board.getCell(r, c).value == 0) {
+            if (!board.getCell(r, c).isGiven &&
+                board.getCell(r, c).value == 0) {
               emptyInRow.add(c);
             }
           }
@@ -446,7 +450,8 @@ void main() {
         for (int r = 0; r < 9 && cellA == null; r++) {
           final emptyInRow = <int>[];
           for (int c = 0; c < 9; c++) {
-            if (!board.getCell(r, c).isGiven && board.getCell(r, c).value == 0) {
+            if (!board.getCell(r, c).isGiven &&
+                board.getCell(r, c).value == 0) {
               emptyInRow.add(c);
             }
           }
@@ -484,7 +489,8 @@ void main() {
         (int, int)? cell;
         for (int r = 0; r < 9 && cell == null; r++) {
           for (int c = 0; c < 9 && cell == null; c++) {
-            if (!board.getCell(r, c).isGiven && board.getCell(r, c).value == 0) {
+            if (!board.getCell(r, c).isGiven &&
+                board.getCell(r, c).value == 0) {
               cell = (r, c);
             }
           }

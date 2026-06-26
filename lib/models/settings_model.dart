@@ -93,8 +93,8 @@ class DailyChallenge {
     final dateStr = json['date'] as String;
     final parts = dateStr.split('-');
     return DailyChallenge(
-      date: DateTime(int.parse(parts[0]), int.parse(parts[1]),
-          int.parse(parts[2])),
+      date: DateTime(
+          int.parse(parts[0]), int.parse(parts[1]), int.parse(parts[2])),
       completed: json['completed'] as bool? ?? false,
       bestTimeSeconds: json['bestTimeSeconds'] as int? ?? 0,
       hintsUsed: json['hintsUsed'] as bool? ?? false,

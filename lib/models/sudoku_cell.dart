@@ -47,10 +47,8 @@ class SudokuCell {
       col: json['col'] as int,
       value: json['value'] as int? ?? 0,
       isGiven: json['isGiven'] as bool? ?? false,
-      notes: (json['notes'] as List<dynamic>?)
-              ?.map((e) => e as int)
-              .toSet() ??
-          {},
+      notes:
+          (json['notes'] as List<dynamic>?)?.map((e) => e as int).toSet() ?? {},
     );
   }
 }

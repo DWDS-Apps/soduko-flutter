@@ -93,7 +93,8 @@ class SudokuBoard {
   bool hasConflicts() {
     for (int r = 0; r < AppConstants.gridSize; r++) {
       for (int c = 0; c < AppConstants.gridSize; c++) {
-        if (!cells[r][c].isEmpty && !isValidPlacement(r, c, cells[r][c].value)) {
+        if (!cells[r][c].isEmpty &&
+            !isValidPlacement(r, c, cells[r][c].value)) {
           return true;
         }
       }
@@ -132,16 +133,13 @@ class SudokuBoard {
   factory SudokuBoard.fromJson(Map<String, dynamic> json) {
     final cellsList = (json['cells'] as List<dynamic>)
         .map((row) => (row as List<dynamic>)
-            .map((cell) =>
-                SudokuCell.fromJson(cell as Map<String, dynamic>))
+            .map((cell) => SudokuCell.fromJson(cell as Map<String, dynamic>))
             .toList())
         .toList();
     return SudokuBoard(cellsList);
   }
 
   List<List<int>> toValueGrid() {
-    return cells
-        .map((row) => row.map((cell) => cell.value).toList())
-        .toList();
+    return cells.map((row) => row.map((cell) => cell.value).toList()).toList();
   }
 }

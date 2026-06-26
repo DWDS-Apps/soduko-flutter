@@ -11,7 +11,8 @@ class StorageService {
 
   Future<void> init() async {
     if (_initialized) return;
-    _appDir = Directory('${Platform.environment['HOME'] ?? '/tmp'}/.sudoku_data');
+    _appDir =
+        Directory('${Platform.environment['HOME'] ?? '/tmp'}/.sudoku_data');
     if (!await _appDir.exists()) {
       await _appDir.create(recursive: true);
     }
