@@ -43,7 +43,8 @@ class AppState extends ChangeNotifier {
   }
 
   // ---- Game Lifecycle ----
-  Future<void> startNewGame(Difficulty difficulty) async {
+  Future<void> startNewGame(Difficulty difficulty,
+      {bool isDailyChallenge = false}) async {
     gameState = null;
     selectedRow = -1;
     selectedCol = -1;
@@ -61,6 +62,7 @@ class AppState extends ChangeNotifier {
       solution: solution,
       difficulty: difficulty,
       startTime: DateTime.now(),
+      isDailyChallenge: isDailyChallenge,
     );
     notifyListeners();
     _autoSave();
@@ -240,7 +242,8 @@ class AppState extends ChangeNotifier {
         board: board,
         solution: solution,
         difficulty: gameState!.difficulty,
-        startTime: DateTime.now());
+        startTime: DateTime.now(),
+        isDailyChallenge: gameState!.isDailyChallenge);
     notifyListeners();
     _autoSave();
   }
@@ -263,6 +266,19 @@ class AppState extends ChangeNotifier {
     gameState = gameState!
         .copyWith(status: GameStatus.won, completedTime: DateTime.now());
     storage.deleteSave();
+
+    // Save daily challenge completion if applicable
+    if (gameState!.isDailyChallenge) {
+      final today = DateTime.now();
+      final todayStart = DateTime(today.year, today.month, today.day);
+      storage.saveDailyChallenge(DailyChallenge(
+        date: todayStart,
+        completed: true,
+        bestTimeSeconds: elapsedSeconds,
+        hintsUsed: gameState!.hintsUsed > 0,
+      ));
+    }
+
     notifyListeners();
   }
 

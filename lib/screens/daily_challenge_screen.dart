@@ -48,7 +48,7 @@ class _DailyChallengeScreenState extends State<DailyChallengeScreen> {
   }
 
   void _startDaily() {
-    widget.state.startNewGame(Difficulty.medium);
+    widget.state.startNewGame(Difficulty.medium, isDailyChallenge: true);
     if (mounted) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => GameScreen(state: widget.state)),

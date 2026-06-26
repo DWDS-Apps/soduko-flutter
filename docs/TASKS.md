@@ -1,6 +1,6 @@
 # Tasks — Sudoku v1.0
 
-|**Last Updated:** 2026-06-25 (Session 14)  
+|**Last Updated:** 2026-06-26 (Session 16)  
 **Tracking method:** This file. Mark `[ ]` → `[x]` as completed.
 
 ---
@@ -46,6 +46,7 @@
 - [x] Pause overlay: pause timer, blur board, resume/restart/quit
 - [x] Auto-save: persist GameState after each move
 - [x] Game completion: validate → show VictoryDialog → record stats
+- [x] Daily challenge completion: save DailyChallenge record on win (Session 16)
 
 ## Phase 6: Polish (Complete ✅)
 

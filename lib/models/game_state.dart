@@ -15,6 +15,7 @@ class GameState {
   final int mistakes;
   final DateTime? startTime;
   final DateTime? completedTime;
+  final bool isDailyChallenge;
 
   GameState({
     required this.board,
@@ -28,6 +29,7 @@ class GameState {
     this.historyIndex = -1,
     this.startTime,
     this.completedTime,
+    this.isDailyChallenge = false,
   }) : history = history ?? [];
 
   int get maxHints => AppConstants.maxHints;
@@ -47,6 +49,7 @@ class GameState {
     int? mistakes,
     DateTime? startTime,
     DateTime? completedTime,
+    bool? isDailyChallenge,
   }) {
     return GameState(
       board: board ?? this.board,
@@ -60,6 +63,7 @@ class GameState {
       mistakes: mistakes ?? this.mistakes,
       startTime: startTime ?? this.startTime,
       completedTime: completedTime ?? this.completedTime,
+      isDailyChallenge: isDailyChallenge ?? this.isDailyChallenge,
     );
   }
 
@@ -74,6 +78,7 @@ class GameState {
         'historyIndex': historyIndex,
         'mistakes': mistakes,
         'startTime': startTime?.toIso8601String(),
+        'isDailyChallenge': isDailyChallenge,
       };
 
   factory GameState.fromJson(Map<String, dynamic> json) {
@@ -97,6 +102,7 @@ class GameState {
       startTime: json['startTime'] != null
           ? DateTime.tryParse(json['startTime'] as String)
           : null,
+      isDailyChallenge: json['isDailyChallenge'] as bool? ?? false,
     );
   }
 }

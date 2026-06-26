@@ -1,6 +1,6 @@
 # Roadmap — Sudoku v1.0
 
-|**Last Updated:** 2026-06-25 (Session 14)  
+|**Last Updated:** 2026-06-26 (Session 16)  
 **Target Release:** v1.0.0  
 
 ---
@@ -42,6 +42,7 @@
 - [x] Pause/resume overlay
 - [x] Auto-save on every move
 - [x] Game completion flow
+- [x] Daily challenge completion persistence (Session 16)
 
 ### Phase 6 — Polish (Complete ✓)
 - [x] Dark mode support
