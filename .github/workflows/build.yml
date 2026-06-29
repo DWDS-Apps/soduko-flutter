@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.44'
+  FLUTTER_VERSION: '3.27.4'
 
 jobs:
   analyze:
@@ -134,23 +134,23 @@ jobs:
             CODE_SIGN_IDENTITY="${{ secrets.IOS_SIGNING_IDENTITY }}" \
             PROVISIONING_PROFILE_SPECIFIER="${{ secrets.IOS_PROFILE_NAME }}"
           cat > /tmp/export-options.plist <<EOM
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>method</key>
-  <string>app-store</string>
-  <key>teamID</key>
-  <string>${{ secrets.IOS_TEAM_ID }}</string>
-  <key>signingStyle</key>
-  <string>manual</string>
-  <key>stripSwiftSymbols</key>
-  <true/>
-  <key>uploadSymbols</key>
-  <true/>
-</dict>
-</plist>
-EOM
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>teamID</key>
+            <string>${{ secrets.IOS_TEAM_ID }}</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          EOM
           xcodebuild -exportArchive \
             -archivePath /tmp/Runner.xcarchive \
             -exportPath build/ios/ipa \
