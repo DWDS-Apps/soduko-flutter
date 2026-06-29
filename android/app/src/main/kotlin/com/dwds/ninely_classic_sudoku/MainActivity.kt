@@ -1,4 +1,4 @@
-package com.dwdsapps.soduko
+package com.dwds.ninely_classic_sudoku
 
 import io.flutter.embedding.android.FlutterActivity
 

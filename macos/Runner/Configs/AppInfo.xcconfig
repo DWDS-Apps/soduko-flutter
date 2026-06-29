@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = soduko
+PRODUCT_NAME = Ninely - Classic Sudoku
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.dwdsapps.soduko
+PRODUCT_BUNDLE_IDENTIFIER = com.dwds.ninely_classic_sudoku
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2026 com.dwdsapps. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 com.dwds. All rights reserved.

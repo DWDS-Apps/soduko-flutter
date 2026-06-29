@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.dwdsapps" "\0"
-            VALUE "FileDescription", "soduko" "\0"
+            VALUE "CompanyName", "com.dwds" "\0"
+            VALUE "FileDescription", "Ninely - Classic Sudoku" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "soduko" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.dwdsapps. All rights reserved." "\0"
-            VALUE "OriginalFilename", "soduko.exe" "\0"
-            VALUE "ProductName", "soduko" "\0"
+            VALUE "InternalName", "Ninely - Classic Sudoku" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 com.dwds. All rights reserved." "\0"
+            VALUE "OriginalFilename", "Ninely - Classic Sudoku.exe" "\0"
+            VALUE "ProductName", "Ninely - Classic Sudoku" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
