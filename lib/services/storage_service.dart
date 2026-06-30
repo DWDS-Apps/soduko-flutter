@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 import '../models/game_state.dart';
 import '../models/player_stats.dart';
 import '../models/settings_model.dart';
@@ -11,8 +12,8 @@ class StorageService {
 
   Future<void> init() async {
     if (_initialized) return;
-    _appDir =
-        Directory('${Platform.environment['HOME'] ?? '/tmp'}/.sudoku_data');
+    final docsDir = await getApplicationDocumentsDirectory();
+    _appDir = Directory('${docsDir.path}/.sudoku_data');
     if (!await _appDir.exists()) {
       await _appDir.create(recursive: true);
     }
